@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Abhinau Kumar">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="nownowk.github.io/post/texture-feature/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/nownowk.github.io/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/nownowk.github.io/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/nownowk.github.io/index.webmanifest">
+  <link rel="icon" type="image/png" href="/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="nownowk.github.io/post/texture-feature/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@nownowk">
+  <meta property="twitter:creator" content="@nownowk">
+  
+  <meta property="og:site_name" content="Abhinau Kumar">
+  <meta property="og:url" content="nownowk.github.io/post/texture-feature/">
+  <meta property="og:title" content="Texture Features | Abhinau Kumar">
+  <meta property="og:description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."><meta property="og:image" content="/nownowk.github.io/post/texture-feature/featured.jpg">
+  <meta property="twitter:image" content="/nownowk.github.io/post/texture-feature/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-08-08T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-08-08T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "nownowk.github.io/post/texture-feature/"
+  },
+  "headline": "Texture Features",
+  
+  "image": [
+    "/nownowk.github.io/post/texture-feature/featured.jpg"
+  ],
+  
+  "datePublished": "2020-08-08T00:00:00Z",
+  "dateModified": "2020-08-08T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Abhinau Kumar"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abhinau Kumar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."
+}
+</script>
+
+  
+
+  
+
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2962ff",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2962ff"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://www.cookiesandyou.com"
+      }
+    })});
+  </script>
+
+
+
+  
+
+
+
+
+
+  <title>Texture Features | Abhinau Kumar</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/nownowk.github.io/">Abhinau Kumar</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/nownowk.github.io/">Abhinau Kumar</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#accomplishments"><span>Accomplishments</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#posts"><span>Academic Writing</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/#writing"><span>Casual Writing</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/nownowk.github.io/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Texture Features</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span ><a href="nownowk.github.io/author/abhinau-kumar/">Abhinau Kumar</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    August 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="nownowk.github.io/category/reading/">Reading</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 700px; max-height: 467px;">
+  <div style="position: relative">
+    <img src="/nownowk.github.io/post/texture-feature/featured.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Source: <a href="https://expertphotography.com/wp-content/uploads/2018/09/texture-photography-wood-bark.jpg"><strong>Expert Photograpy</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.</p>
+<p>But, what is texture? Simply, &lsquo;&lsquo;texture&rsquo;&rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &lsquo;&lsquo;texture&rsquo;&rsquo;.</p>
+<p>Texture can also be thought of as local &lsquo;&lsquo;complexity&rsquo;&rsquo;. The first square in our example had two plain regions, so it was &lsquo;&lsquo;simple&rsquo;&rsquo;, while the checkerboard pattern is more &lsquo;&lsquo;complex&rsquo;&rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &lsquo;&lsquo;simple&rsquo;&rsquo; or &lsquo;&lsquo;plain&rsquo;&rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.</p>
+<p>What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification, and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass, because they have different textures.</p>
+<p>We will now look at features that we can use to describe textures. Currently, I&rsquo;m not interested in specific algorithms. My goal is to find ways to &lsquo;&lsquo;describe&rsquo;&rsquo; texture. This will also not be an exhaustive review of all texture features. After all, texture is not the focus of my work. Learning this is just the means to an end, so I will only go so far as I need to.</p>
+<p>Most of my reading has used this presentation [1] and this review article [2] as jumping points to other sources wherever necessary.</p>
+<h1 id="first-order-statistical-features">First-Order Statistical Features</h1>
+<p>Statistics that only depend on individual pixel values are called first-order statistics. The local range and variance are simple first-order statistical features to describe textures. Plain regions have a smaller range (max - min) while textured regions have larger ranges because of the greater diversity in intensity values. A similar argument can be made about local variances because of which we expect textured regions to have higher variance than plain regions.</p>
+<h1 id="gray-level-co-occurence-matrix-glcm">Gray Level Co-occurence Matrix (GLCM)</h1>
+<p>The Gray Level Co-occurence Matric (GLCM) is arguably the most common method of describing textures. The GLCM records second-order statistics, because it depends on pairs of pixels, storing information about the relative positions of pixels having similar intensity values. Given an offset  $\delta = (\delta x, \delta y)$ , the GLCM is a $256 \times 256$ matrix counting the co-occurence of gray levels at an offset  $ \delta $ . That is, we construct a matrix whose entries are
+$$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta y,y+\delta y] = j) $$</p>
+<p>The entries of this matrix are then normalized by the sum of all entries, giving us a normalized GLCM, say  $ P_\delta $ , which is a valid probability mass function. While the GLCM itself is not used to, say, compare textures, we derive numerical features from these which are used to describe texture. Some examples of such features are</p>
+<ul>
+<li><strong>Maximum</strong> :  $ \max P_\delta[i,j] $ , i.e., the most likely pair of intensities.</li>
+<li><strong>Order $ k $ difference moment</strong> : $ E[(i-j)^k)] $ , or its inverse  $ E[1/(i-j)^k] $ . A special case of this is the contrast, which is the 2nd difference moment, i.e.,  $ E[(i-j)^2] $ .</li>
+<li><strong>Homogeneity</strong>: $ E\left[\frac{1}{(1 + \lvert i-j\rvert)}\right] $ . A homogeneous image will have non-zero entries close to the principal diagonal, i.e  $ i \approx j $ , while a heterogeneous image will have a more even spread since many pairs occur.</li>
+<li><strong>Entropy</strong>: $ E[-\log P_\delta[i,j]] $ , which is a measure of the &lsquo;&lsquo;spread&rsquo;&rsquo; or the amount of information in the distribution.</li>
+<li><strong>Correlation</strong>: $ \frac{E[ij] - \mu_i\mu_j}{\sigma_i \sigma_j} $  which is high when pixels have a linear dependence.</li>
+</ul>
+<p>Haralick [3] defined 14 texture features based on the GLCN. In a similar vein, the Gray Level Difference statistics (GLDS) are derived from a vector of 256 values, which count the number of times each difference  $ \lvert i-j\rvert $  occurs between pairs of intensity values separated by a distance  $ \delta $ .</p>
+<p>A main drawback of the GLCM and the GLDS is finding a good choice of  $ \delta $ . In the current deep learning/gradient-based optimization era, I would add that the non-differentiability of the counting process is an added drawback.</p>
+<h1 id="autocorrelation-function">Autocorrelation Function</h1>
+<p>The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $  the ACF is defined as</p>
+<p>$$ \rho(u,v) = \frac{\sum_x \sum_y I(x,y) I(x+u, y+v)}{\sum_x\sum_y I^2(x,y)} $$</p>
+<p>The auto-correlation function is a function of the &lsquo;&lsquo;offset&rsquo;&rsquo; between pairs of pixels. Given an offset, we multiply corresponding intensity values and consider the normalized sum. Why is this relevant? When the offset is close to the &lsquo;&lsquo;true&rsquo;&rsquo; offset between similar texture elements, the value of the ACF is close to 1, which is its highest value.</p>
+<p>Why is this the case? The short technical answer is &lsquo;&lsquo;Cauchy-Schwarz Inequality&rsquo;&rsquo;. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &lsquo;&lsquo;test&rsquo;&rsquo; various offsets. When we choose the correct offset, the repeating intensities &lsquo;&lsquo;line up&rsquo;&rsquo;, so they get squared in the summation, leading to an ACF value close to 1. When we choose an &lsquo;&lsquo;incorrect&rsquo;&rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &lsquo;&lsquo;lining up&rsquo;&rsquo; is a good thing.</p>
+<p><img src="cs_ineq.png" alt="Visualizing Cauchy-Scwarz Inequality"></p>
+<p>At this point, much like Dumbledore to Harry on the Astronomy tower, I must ask for your trust in believing that squaring values when lining up is the &lsquo;&lsquo;best&rsquo;&rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].</p>
+<p>Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shifts to fall out of, or out of phase with, the texture. On the other hand, fine textures cause sharp drop in the ACF.</p>
+<h1 id="signal-processing-methods">Signal Processing Methods</h1>
+<p>We begin with the simple observation that the coarseness of texture in a region is related to the density of edges in that region. Fine textures have higher edge density compared to coarse textures. To extract these features we can use edge operators like the Laplacian operator.</p>
+<p>Another set of filters is used to calculate the  $ (p+q) $  th moment of an image region  $ \mathcal{R} $
+$$  m_{p,q}(x,y) = \sum_{(u,v) \in \mathcal{R}} u^p v^q I(u,v)  $$</p>
+<p>Choosing the region  $ \mathcal{R} $  to be a rectangular region, we can implement this as a linear filter having the appropriate weights.</p>
+<p>Perceptually motivated methods use filters that better represent the preattentive perception in the Human Visual System (HVS). Gabor filters, which are complex exponentials having a Gaussian envelope, are a good model of simple cells in the primary visual cortex. Because these filters are both frequency and orientation selective, they are used to conduct multi-scale multi-orientation analysis of images.</p>
+<p>To derive texture features, an image to passed through a Gabor filter bank to obtain subbands  $ r_i(x,y) $ . These responses are passed through a sigmoid non-linearity  $ \sigma $  (tanh function) and used to obtain texture features
+\begin{equation}
+f_i(x,y) = \sum_{(u,v) \in \mathcal{R}} |\sigma(r_i(u,v))|
+\end{equation}</p>
+<p>Laws [5] proposed a computationally efficient method to compute texture energies using spatially separable filters. The method uses a set of Texture Energy Metric (TEM) vectors. The outer product of each pair of vectors results in a filter. The five types of vectors (corresponding to different textures) are level, edge, spot, wave and ripple.
+These TEM filters are used to filter images and compute the local texture energy, which is simply the sum of the magnitudes in a local region.</p>
+<h1 id="references">References</h1>
+<p>[1] Micheal A. Wirth. Texture Analysis 
+<a href="http://www.cyto.purdue.edu/cdroms/micro2/content/education/wirth06.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[2] Mihran Tuceryan and Anil K. Jain. Texture Analysis. <em>Handbook of Pattern Recognition and Computer Vision</em> 
+<a href="https://www.worldscientific.com/doi/abs/10.1142/9789814343138_0010" target="_blank" rel="noopener">Link</a></p>
+<p>[3] R. M. Haralick and K. Shanmugam and I. Dinstein. Textural Features for Image Classification. <em>IEEE Transactions on Systems, Man, and Cybernetics, 1973</em> 
+<a href="http://haralick.org/journals/TexturalFeatures.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[4] Hui-Hua Wu and Shanhe Wu. Various proofs of the Cauchy-Schwarz inequality. 
+<a href="https://www.statisticshowto.com/wp-content/uploads/2016/06/Cauchy-Schwarzinequality.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[5] Kenneth I. Laws. Rapid Texture Identification. <em>Optics &amp; Photonics, 1980</em> 
+<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/0238/0000/Rapid-Texture-Identification/10.1117/12.959169.short" target="_blank" rel="noopener">Link</a></p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="nownowk.github.io/tag/academic/">Academic</a>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/nownowk.github.io/author/abhinau-kumar/avatar_hu341bcf8a617ab9ed402a94dec154df91_1599710_270x270_fill_q90_lanczos_center.jpg" alt="Abhinau Kumar">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="nownowk.github.io/">Abhinau Kumar</a></h5>
+        <h6 class="card-subtitle">Graduate Student and Research Assistant</h6>
+        <p class="card-text">My work is focused on estimating and optimizing the subjective quality of images and videos.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:abhinaukumar@utexas.edu" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/nownowk" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=sI4C0T0AAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/nownowk" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://linkedin.com/abhinau-kumar" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/nownowk.github.io/files/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="nownowk.github.io/post/the-tourist/">The Tourist</a></li>
+      
+      <li><a href="nownowk.github.io/post/the-old-mans-tale/">The Old Man&#39;s Tale</a></li>
+      
+      <li><a href="nownowk.github.io/post/in-search-of-swaraj/">In Search of Swaraj</a></li>
+      
+      <li><a href="nownowk.github.io/post/the-five-stages-of-summer/">The Five Stages of Summer</a></li>
+      
+      <li><a href="nownowk.github.io/post/harsha-bhogle/">He Who Derived His Excellence From That Of Others</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/cpp.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/bash.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/nownowk.github.io/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/nownowk.github.io/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

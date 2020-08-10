@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Academic | Abhinau Kumar</title>
+    <link>nownowk.github.io/tag/academic/</link>
+      <atom:link href="nownowk.github.io/tag/academic/index.xml" rel="self" type="application/rss+xml" />
+    <description>Academic</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 08 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Academic</title>
+      <link>nownowk.github.io/tag/academic/</link>
+    </image>
+    
+    <item>
+      <title>Texture Features</title>
+      <link>nownowk.github.io/post/texture-feature/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>nownowk.github.io/post/texture-feature/</guid>
+      <description>&lt;p&gt;This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.&lt;/p&gt;
+&lt;p&gt;But, what is texture? Simply, &amp;lsquo;&amp;lsquo;texture&amp;rsquo;&amp;rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &amp;lsquo;&amp;lsquo;texture&amp;rsquo;&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;Texture can also be thought of as local &amp;lsquo;&amp;lsquo;complexity&amp;rsquo;&amp;rsquo;. The first square in our example had two plain regions, so it was &amp;lsquo;&amp;lsquo;simple&amp;rsquo;&amp;rsquo;, while the checkerboard pattern is more &amp;lsquo;&amp;lsquo;complex&amp;rsquo;&amp;rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &amp;lsquo;&amp;lsquo;simple&amp;rsquo;&amp;rsquo; or &amp;lsquo;&amp;lsquo;plain&amp;rsquo;&amp;rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.&lt;/p&gt;
+&lt;p&gt;What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification, and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass, because they have different textures.&lt;/p&gt;
+&lt;p&gt;We will now look at features that we can use to describe textures. Currently, I&amp;rsquo;m not interested in specific algorithms. My goal is to find ways to &amp;lsquo;&amp;lsquo;describe&amp;rsquo;&amp;rsquo; texture. This will also not be an exhaustive review of all texture features. After all, texture is not the focus of my work. Learning this is just the means to an end, so I will only go so far as I need to.&lt;/p&gt;
+&lt;p&gt;Most of my reading has used this presentation [1] and this review article [2] as jumping points to other sources wherever necessary.&lt;/p&gt;
+&lt;h1 id=&#34;first-order-statistical-features&#34;&gt;First-Order Statistical Features&lt;/h1&gt;
+&lt;p&gt;Statistics that only depend on individual pixel values are called first-order statistics. The local range and variance are simple first-order statistical features to describe textures. Plain regions have a smaller range (max - min) while textured regions have larger ranges because of the greater diversity in intensity values. A similar argument can be made about local variances because of which we expect textured regions to have higher variance than plain regions.&lt;/p&gt;
+&lt;h1 id=&#34;gray-level-co-occurence-matrix-glcm&#34;&gt;Gray Level Co-occurence Matrix (GLCM)&lt;/h1&gt;
+&lt;p&gt;The Gray Level Co-occurence Matric (GLCM) is arguably the most common method of describing textures. The GLCM records second-order statistics, because it depends on pairs of pixels, storing information about the relative positions of pixels having similar intensity values. Given an offset  $\delta = (\delta x, \delta y)$ , the GLCM is a $256 \times 256$ matrix counting the co-occurence of gray levels at an offset  $ \delta $ . That is, we construct a matrix whose entries are
+$$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta y,y+\delta y] = j) $$&lt;/p&gt;
+&lt;p&gt;The entries of this matrix are then normalized by the sum of all entries, giving us a normalized GLCM, say  $ P_\delta $ , which is a valid probability mass function. While the GLCM itself is not used to, say, compare textures, we derive numerical features from these which are used to describe texture. Some examples of such features are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Maximum&lt;/strong&gt; :  $ \max P_\delta[i,j] $ , i.e., the most likely pair of intensities.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order $ k $ difference moment&lt;/strong&gt; : $ E[(i-j)^k)] $ , or its inverse  $ E[1/(i-j)^k] $ . A special case of this is the contrast, which is the 2nd difference moment, i.e.,  $ E[(i-j)^2] $ .&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Homogeneity&lt;/strong&gt;: $ E\left[\frac{1}{(1 + \lvert i-j\rvert)}\right] $ . A homogeneous image will have non-zero entries close to the principal diagonal, i.e  $ i \approx j $ , while a heterogeneous image will have a more even spread since many pairs occur.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Entropy&lt;/strong&gt;: $ E[-\log P_\delta[i,j]] $ , which is a measure of the &amp;lsquo;&amp;lsquo;spread&amp;rsquo;&amp;rsquo; or the amount of information in the distribution.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Correlation&lt;/strong&gt;: $ \frac{E[ij] - \mu_i\mu_j}{\sigma_i \sigma_j} $  which is high when pixels have a linear dependence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Haralick [3] defined 14 texture features based on the GLCN. In a similar vein, the Gray Level Difference statistics (GLDS) are derived from a vector of 256 values, which count the number of times each difference  $ \lvert i-j\rvert $  occurs between pairs of intensity values separated by a distance  $ \delta $ .&lt;/p&gt;
+&lt;p&gt;A main drawback of the GLCM and the GLDS is finding a good choice of  $ \delta $ . In the current deep learning/gradient-based optimization era, I would add that the non-differentiability of the counting process is an added drawback.&lt;/p&gt;
+&lt;h1 id=&#34;autocorrelation-function&#34;&gt;Autocorrelation Function&lt;/h1&gt;
+&lt;p&gt;The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $  the ACF is defined as&lt;/p&gt;
+&lt;p&gt;$$ \rho(u,v) = \frac{\sum_x \sum_y I(x,y) I(x+u, y+v)}{\sum_x\sum_y I^2(x,y)} $$&lt;/p&gt;
+&lt;p&gt;The auto-correlation function is a function of the &amp;lsquo;&amp;lsquo;offset&amp;rsquo;&amp;rsquo; between pairs of pixels. Given an offset, we multiply corresponding intensity values and consider the normalized sum. Why is this relevant? When the offset is close to the &amp;lsquo;&amp;lsquo;true&amp;rsquo;&amp;rsquo; offset between similar texture elements, the value of the ACF is close to 1, which is its highest value.&lt;/p&gt;
+&lt;p&gt;Why is this the case? The short technical answer is &amp;lsquo;&amp;lsquo;Cauchy-Schwarz Inequality&amp;rsquo;&amp;rsquo;. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &amp;lsquo;&amp;lsquo;test&amp;rsquo;&amp;rsquo; various offsets. When we choose the correct offset, the repeating intensities &amp;lsquo;&amp;lsquo;line up&amp;rsquo;&amp;rsquo;, so they get squared in the summation, leading to an ACF value close to 1. When we choose an &amp;lsquo;&amp;lsquo;incorrect&amp;rsquo;&amp;rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &amp;lsquo;&amp;lsquo;lining up&amp;rsquo;&amp;rsquo; is a good thing.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;cs_ineq.png&#34; alt=&#34;Visualizing Cauchy-Scwarz Inequality&#34;&gt;&lt;/p&gt;
+&lt;p&gt;At this point, much like Dumbledore to Harry on the Astronomy tower, I must ask for your trust in believing that squaring values when lining up is the &amp;lsquo;&amp;lsquo;best&amp;rsquo;&amp;rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&amp;rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].&lt;/p&gt;
+&lt;p&gt;Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shifts to fall out of, or out of phase with, the texture. On the other hand, fine textures cause sharp drop in the ACF.&lt;/p&gt;
+&lt;h1 id=&#34;signal-processing-methods&#34;&gt;Signal Processing Methods&lt;/h1&gt;
+&lt;p&gt;We begin with the simple observation that the coarseness of texture in a region is related to the density of edges in that region. Fine textures have higher edge density compared to coarse textures. To extract these features we can use edge operators like the Laplacian operator.&lt;/p&gt;
+&lt;p&gt;Another set of filters is used to calculate the  $ (p+q) $  th moment of an image region  $ \mathcal{R} $
+$$  m_{p,q}(x,y) = \sum_{(u,v) \in \mathcal{R}} u^p v^q I(u,v)  $$&lt;/p&gt;
+&lt;p&gt;Choosing the region  $ \mathcal{R} $  to be a rectangular region, we can implement this as a linear filter having the appropriate weights.&lt;/p&gt;
+&lt;p&gt;Perceptually motivated methods use filters that better represent the preattentive perception in the Human Visual System (HVS). Gabor filters, which are complex exponentials having a Gaussian envelope, are a good model of simple cells in the primary visual cortex. Because these filters are both frequency and orientation selective, they are used to conduct multi-scale multi-orientation analysis of images.&lt;/p&gt;
+&lt;p&gt;To derive texture features, an image to passed through a Gabor filter bank to obtain subbands  $ r_i(x,y) $ . These responses are passed through a sigmoid non-linearity  $ \sigma $  (tanh function) and used to obtain texture features
+\begin{equation}
+f_i(x,y) = \sum_{(u,v) \in \mathcal{R}} |\sigma(r_i(u,v))|
+\end{equation}&lt;/p&gt;
+&lt;p&gt;Laws [5] proposed a computationally efficient method to compute texture energies using spatially separable filters. The method uses a set of Texture Energy Metric (TEM) vectors. The outer product of each pair of vectors results in a filter. The five types of vectors (corresponding to different textures) are level, edge, spot, wave and ripple.
+These TEM filters are used to filter images and compute the local texture energy, which is simply the sum of the magnitudes in a local region.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
+&lt;p&gt;[1] Micheal A. Wirth. Texture Analysis 
+&lt;a href=&#34;http://www.cyto.purdue.edu/cdroms/micro2/content/education/wirth06.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] Mihran Tuceryan and Anil K. Jain. Texture Analysis. &lt;em&gt;Handbook of Pattern Recognition and Computer Vision&lt;/em&gt; 
+&lt;a href=&#34;https://www.worldscientific.com/doi/abs/10.1142/9789814343138_0010&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] R. M. Haralick and K. Shanmugam and I. Dinstein. Textural Features for Image Classification. &lt;em&gt;IEEE Transactions on Systems, Man, and Cybernetics, 1973&lt;/em&gt; 
+&lt;a href=&#34;http://haralick.org/journals/TexturalFeatures.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[4] Hui-Hua Wu and Shanhe Wu. Various proofs of the Cauchy-Schwarz inequality. 
+&lt;a href=&#34;https://www.statisticshowto.com/wp-content/uploads/2016/06/Cauchy-Schwarzinequality.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[5] Kenneth I. Laws. Rapid Texture Identification. &lt;em&gt;Optics &amp;amp; Photonics, 1980&lt;/em&gt; 
+&lt;a href=&#34;https://www.spiedigitallibrary.org/conference-proceedings-of-spie/0238/0000/Rapid-Texture-Identification/10.1117/12.959169.short&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sumohana S. Channappayya | Abhinau Kumar</title>
+    <link>nownowk.github.io/author/sumohana-s.-channappayya/</link>
+      <atom:link href="nownowk.github.io/author/sumohana-s.-channappayya/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sumohana S. Channappayya</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 09 Aug 2020 16:43:32 -0500</lastBuildDate>
+    <image>
+      <url>/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Sumohana S. Channappayya</title>
+      <link>nownowk.github.io/author/sumohana-s.-channappayya/</link>
+    </image>
+    
+    <item>
+      <title>Perceptually Driven Conditional GAN for Fourier Ptychography</title>
+      <link>nownowk.github.io/publication/fourier-ptychography/</link>
+      <pubDate>Sun, 09 Aug 2020 16:43:32 -0500</pubDate>
+      <guid>nownowk.github.io/publication/fourier-ptychography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>No-reference quality assessment of tone mapped High Dynamic Range (HDR) images using transfer learning</title>
+      <link>nownowk.github.io/publication/hdr-quality-assessment/</link>
+      <pubDate>Sun, 09 Aug 2020 16:34:44 -0500</pubDate>
+      <guid>nownowk.github.io/publication/hdr-quality-assessment/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
