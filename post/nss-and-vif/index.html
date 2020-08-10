@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.">
+  <meta name="description" content="This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://nownowk.github.io/post/texture-feature/">
+  <link rel="alternate" hreflang="en-us" href="https://nownowk.github.io/post/nss-and-vif/">
 
   
 
@@ -234,7 +234,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://nownowk.github.io/post/texture-feature/">
+  <link rel="canonical" href="https://nownowk.github.io/post/nss-and-vif/">
 
   
   
@@ -252,15 +252,15 @@
   <meta property="twitter:creator" content="@nownowk">
   
   <meta property="og:site_name" content="Abhinau Kumar">
-  <meta property="og:url" content="https://nownowk.github.io/post/texture-feature/">
-  <meta property="og:title" content="Texture Features | Abhinau Kumar">
-  <meta property="og:description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."><meta property="og:image" content="https://nownowk.github.io/post/texture-feature/featured.jpg">
-  <meta property="twitter:image" content="https://nownowk.github.io/post/texture-feature/featured.jpg"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://nownowk.github.io/post/nss-and-vif/">
+  <meta property="og:title" content="Natural Scene Statistics and Visual Information Fidelity | Abhinau Kumar">
+  <meta property="og:description" content="This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture."><meta property="og:image" content="https://nownowk.github.io/post/nss-and-vif/featured.jpg">
+  <meta property="twitter:image" content="https://nownowk.github.io/post/nss-and-vif/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-08-08T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2019-08-07T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-08-08T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2019-08-07T00:00:00&#43;00:00">
   
 
   
@@ -284,16 +284,16 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://nownowk.github.io/post/texture-feature/"
+    "@id": "https://nownowk.github.io/post/nss-and-vif/"
   },
-  "headline": "Texture Features",
+  "headline": "Natural Scene Statistics and Visual Information Fidelity",
   
   "image": [
-    "https://nownowk.github.io/post/texture-feature/featured.jpg"
+    "https://nownowk.github.io/post/nss-and-vif/featured.jpg"
   ],
   
-  "datePublished": "2020-08-08T00:00:00Z",
-  "dateModified": "2020-08-08T00:00:00Z",
+  "datePublished": "2019-08-07T00:00:00Z",
+  "dateModified": "2019-08-07T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -308,7 +308,7 @@
       "url": "https://nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."
+  "description": "This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture."
 }
 </script>
 
@@ -356,7 +356,7 @@
 
 
 
-  <title>Texture Features | Abhinau Kumar</title>
+  <title>Natural Scene Statistics and Visual Information Fidelity | Abhinau Kumar</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -694,10 +694,12 @@
 
   
   
+    
+  
 
 
 <div class="article-container pt-3">
-  <h1>Texture Features</h1>
+  <h1>Natural Scene Statistics and Visual Information Fidelity</h1>
 
   
 
@@ -708,16 +710,6 @@
 
   
   
-  
-  
-  <div>
-    
-
-  
-  <span ><a href="/author/abhinau-kumar/">Abhinau Kumar</a></span>
-  </div>
-  
-  
 
   
   <span class="article-date">
@@ -725,7 +717,7 @@
     
       
     
-    August 2020
+    August 2019
   </span>
   
 
@@ -764,10 +756,10 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 700px; max-height: 467px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 288px;">
   <div style="position: relative">
-    <img src="/post/texture-feature/featured.jpg" alt="" class="featured-image">
-    <span class="article-header-caption">Source: <a href="https://expertphotography.com/wp-content/uploads/2018/09/texture-photography-wood-bark.jpg"><strong>Expert Photograpy</strong></a></span>
+    <img src="/post/nss-and-vif/featured_hu20cdeefe3121d717b29c6767204492aa_235843_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Source <a href="https://www.the-scientist.com/news-opinion/smells-of-nature-lower-physiological-stress-66864"><strong>The Scientist</strong></a></span>
   </div>
 </div>
 
@@ -776,58 +768,77 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.</p>
-<p>But, what is texture? Simply, &lsquo;&lsquo;texture&rsquo;&rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &lsquo;&lsquo;texture&rsquo;&rsquo;.</p>
-<p>Texture can also be thought of as local &lsquo;&lsquo;complexity&rsquo;&rsquo;. The first square in our example had two plain regions, so it was &lsquo;&lsquo;simple&rsquo;&rsquo;, while the checkerboard pattern is more &lsquo;&lsquo;complex&rsquo;&rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &lsquo;&lsquo;simple&rsquo;&rsquo; or &lsquo;&lsquo;plain&rsquo;&rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.</p>
-<p>What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification, and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass, because they have different textures.</p>
-<p>We will now look at features that we can use to describe textures. Currently, I&rsquo;m not interested in specific algorithms. My goal is to find ways to &lsquo;&lsquo;describe&rsquo;&rsquo; texture. This will also not be an exhaustive review of all texture features. After all, texture is not the focus of my work. Learning this is just the means to an end, so I will only go so far as I need to.</p>
-<p>Most of my reading has used this presentation [1] and this review article [2] as jumping points to other sources wherever necessary.</p>
-<h1 id="first-order-statistical-features">First-Order Statistical Features</h1>
-<p>Statistics that only depend on individual pixel values are called first-order statistics. The local range and variance are simple first-order statistical features to describe textures. Plain regions have a smaller range (max - min) while textured regions have larger ranges because of the greater diversity in intensity values. A similar argument can be made about local variances because of which we expect textured regions to have higher variance than plain regions.</p>
-<h1 id="gray-level-co-occurence-matrix-glcm">Gray Level Co-occurence Matrix (GLCM)</h1>
-<p>The Gray Level Co-occurence Matric (GLCM) is arguably the most common method of describing textures. The GLCM records second-order statistics, because it depends on pairs of pixels, storing information about the relative positions of pixels having similar intensity values. Given an offset  $\delta = (\delta x, \delta y)$ , the GLCM is a $256 \times 256$ matrix counting the co-occurence of gray levels at an offset  $ \delta $ . That is, we construct a matrix whose entries are
-$$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta y,y+\delta y] = j) $$</p>
-<p>The entries of this matrix are then normalized by the sum of all entries, giving us a normalized GLCM, say  $ P_\delta $ , which is a valid probability mass function. While the GLCM itself is not used to, say, compare textures, we derive numerical features from these which are used to describe texture. Some examples of such features are</p>
-<ul>
-<li><strong>Maximum</strong> :  $ \max P_\delta[i,j] $ , i.e., the most likely pair of intensities.</li>
-<li><strong>Order $ k $ difference moment</strong> : $ E[(i-j)^k)] $ , or its inverse  $ E[1/(i-j)^k] $ . A special case of this is the contrast, which is the 2nd difference moment, i.e.,  $ E[(i-j)^2] $ .</li>
-<li><strong>Homogeneity</strong>: $ E\left[\frac{1}{(1 + \lvert i-j\rvert)}\right] $ . A homogeneous image will have non-zero entries close to the principal diagonal, i.e  $ i \approx j $ , while a heterogeneous image will have a more even spread since many pairs occur.</li>
-<li><strong>Entropy</strong>: $ E[-\log P_\delta[i,j]] $ , which is a measure of the &lsquo;&lsquo;spread&rsquo;&rsquo; or the amount of information in the distribution.</li>
-<li><strong>Correlation</strong>: $ \frac{E[ij] - \mu_i\mu_j}{\sigma_i \sigma_j} $  which is high when pixels have a linear dependence.</li>
-</ul>
-<p>Haralick [3] defined 14 texture features based on the GLCN. In a similar vein, the Gray Level Difference statistics (GLDS) are derived from a vector of 256 values, which count the number of times each difference  $ \lvert i-j\rvert $  occurs between pairs of intensity values separated by a distance  $ \delta $ .</p>
-<p>A main drawback of the GLCM and the GLDS is finding a good choice of  $ \delta $ . In the current deep learning/gradient-based optimization era, I would add that the non-differentiability of the counting process is an added drawback.</p>
-<h1 id="autocorrelation-function">Autocorrelation Function</h1>
-<p>The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $  the ACF is defined as</p>
-<p>$$ \rho(u,v) = \frac{\sum_x \sum_y I(x,y) I(x+u, y+v)}{\sum_x\sum_y I^2(x,y)} $$</p>
-<p>The auto-correlation function is a function of the &lsquo;&lsquo;offset&rsquo;&rsquo; between pairs of pixels. Given an offset, we multiply corresponding intensity values and consider the normalized sum. Why is this relevant? When the offset is close to the &lsquo;&lsquo;true&rsquo;&rsquo; offset between similar texture elements, the value of the ACF is close to 1, which is its highest value.</p>
-<p>Why is this the case? The short technical answer is &lsquo;&lsquo;Cauchy-Schwarz Inequality&rsquo;&rsquo;. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &lsquo;&lsquo;test&rsquo;&rsquo; various offsets. When we choose the correct offset, the repeating intensities &lsquo;&lsquo;line up&rsquo;&rsquo;, so they get squared in the summation, leading to an ACF value close to 1. When we choose an &lsquo;&lsquo;incorrect&rsquo;&rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &lsquo;&lsquo;lining up&rsquo;&rsquo; is a good thing.</p>
-<p><img src="cs_ineq.png" alt="Visualizing Cauchy-Scwarz Inequality"></p>
-<p>At this point, much like Dumbledore to Harry on the Astronomy tower, I must ask for your trust in believing that squaring values when lining up is the &lsquo;&lsquo;best&rsquo;&rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].</p>
-<p>Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shifts to fall out of, or out of phase with, the texture. On the other hand, fine textures cause sharp drop in the ACF.</p>
-<h1 id="signal-processing-methods">Signal Processing Methods</h1>
-<p>We begin with the simple observation that the coarseness of texture in a region is related to the density of edges in that region. Fine textures have higher edge density compared to coarse textures. To extract these features we can use edge operators like the Laplacian operator.</p>
-<p>Another set of filters is used to calculate the  $ (p+q) $  th moment of an image region  $ \mathcal{R} $
-$$  m_{p,q}(x,y) = \sum_{(u,v) \in \mathcal{R}} u^p v^q I(u,v)  $$</p>
-<p>Choosing the region  $ \mathcal{R} $  to be a rectangular region, we can implement this as a linear filter having the appropriate weights.</p>
-<p>Perceptually motivated methods use filters that better represent the preattentive perception in the Human Visual System (HVS). Gabor filters, which are complex exponentials having a Gaussian envelope, are a good model of simple cells in the primary visual cortex. Because these filters are both frequency and orientation selective, they are used to conduct multi-scale multi-orientation analysis of images.</p>
-<p>To derive texture features, an image to passed through a Gabor filter bank to obtain subbands  $ r_i(x,y) $ . These responses are passed through a sigmoid non-linearity  $ \sigma $  (tanh function) and used to obtain texture features
-\begin{equation}
-f_i(x,y) = \sum_{(u,v) \in \mathcal{R}} |\sigma(r_i(u,v))|
-\end{equation}</p>
-<p>Laws [5] proposed a computationally efficient method to compute texture energies using spatially separable filters. The method uses a set of Texture Energy Metric (TEM) vectors. The outer product of each pair of vectors results in a filter. The five types of vectors (corresponding to different textures) are level, edge, spot, wave and ripple.
-These TEM filters are used to filter images and compute the local texture energy, which is simply the sum of the magnitudes in a local region.</p>
+      <p>This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture. Then, we will review some basic information theory and use these tools to derive an image quality model.</p>
+<p>Let us begin at the basics. A Random Variable (<em>very</em> informally, a variable that takes a random value) $ X $ is said to be Gaussian or Normal and is denoted by $ X \sim \mathcal{N}(\mu, \sigma^2 )$ if its associated probability distribution function (pdf) is given by
+$$ f_N(x, \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right).$$</p>
+<p>If that does not mean a lot to you, it&rsquo;s fine. One does not need to know the expression of a hyperbolic paraboloid to enjoy 
+<a href="https://interestingengineering.com/geometry-of-pringles-crunchy-hyperbolic-paraboloid" target="_blank" rel="noopener">chips out of a Pringles can</a>. The simplest way to think about it is that it a distribution which is centred around a mean value $\mu$ and whose spread (variance) is controlled by $\sigma$. It looks like so.</p>
+<p><img src="paranormal_distribution.jpg" alt=""></p>
+<p>This definition can be extended naturally to random vectors (RVs), whose distribution is parameterized by a vector $\mu$ and covariance matrix $\Sigma$. This distribution is called a multivariate (because many variables) Gaussian and its pdf in $d$ dimensions is given by
+$$ f_N(x; \mu, \Sigma, d) = \frac{1}{\sqrt{(2\pi)^d|\Sigma|}} \exp\left(-\frac{1}{2}(x - \mu)^T \Sigma^{-1} (x - \mu))\right) $$</p>
+<p>Now that we know what a Gaussian is, we can &lsquo;&lsquo;mix&rsquo;&rsquo; Gaussians together. The way we mix Gaussians is by having a set of Gaussian RVs, picking one of them at random and using that RV to generate a sample. In a way, we add a layer of randomness on top of the existing randomness.</p>
+<p>Let us call the random variable which tells us which Gaussian RV to pick the mixing variable $ S $. A compact way of expressing the explanation above is to say that given $ S = s $, RV $X$ has the conditional distribution $X|S = s \sim \mathcal{N}(\mu(s), \Sigma(s))$. Then, with a bit of probability magic, we can show that the pdf of the Gaussian Mixture is given by</p>
+<p>$$ f(x) = E_S[f_N(x; \mu(s), \Sigma(s), d)] $$</p>
+<p>Once again, the actual math is not critical. The intuition here is that we picked Gaussian RVs at random, so the overall distribution is an average of their individual distributions.</p>
+<p>The Gaussian Scale Mixture (GSM) is a simplified version of this distribution, where we assume all the Gaussians are centred at the origin, i.e., $ \mu(s) = 0$ and that all covariance matrices are scaled versions of each other, i.e., $\Sigma(s) = s^2 \Sigma$ for some covariance matrix $\Sigma$. That is to say, the components of a GSM only differ by a scaling factor. Interestingly, we can &lsquo;&lsquo;decompose&rsquo;&rsquo; the GSM distributed random variable using a positive random variable $S$ and a Gaussian RV $U \sim \mathcal{N}(0, \Sigma)$ as
+$$ X = S \cdot U $$</p>
+<p>While this model is a &lsquo;&lsquo;simplification&rsquo;&rsquo; of the Gaussian Mixture Model (GMM), it is powerful a model for natural scenes. This is mainly because unlike a Gaussian, a GSM can represent heavy-tailed distributions, i.e, distributions which decay slowly. In their seminal work [3] showed that wavelet coefficients GSM can be used to model wavelet coefficients of natural images.</p>
+<p>At this point, we should clarify and introduce a few notions. First, what are natural images? They are not images <em>of nature</em>. A natural image is an image which has not undergone any distortions, like blur, compression. noise, etc. So, a natural image is one which <em>looks</em> natural.</p>
+<p>Second, what are wavelets? Informally, a wavelet is a &lsquo;&lsquo;localized&rsquo;&rsquo; wave. That is, while waves (think sinusoids) are periodic and infinite, wavelets are more localized in space (or time). Much like the Heisenberg Uncertainty principle, signals also obey an uncertainty principle. Simply put, a signal cannot have an arbitrary small spread in both space and frequency. So, because a wave has zero spread in frequency (a sinusoid has only one frequency), it has an infinite spread in space. In other words, we say that a sinusoid offers perfect frequency resolution but no spatial resolution.</p>
+<p>A wavelet, by being localized in space, allows us to trade off spread in space for spread in frequency, giving us both (limited) spatial and frequency resolution. A wider wavelet has poorer spatial resolution, but better frequency resolution. Because images are two dimensional, there is also a notion of orientation resolution. Isotropic functions (functions which are identical in all directions) offer no orientation selectivity in space while very narrow functions offer high orientation selectivity. The steerable pyramid [3], used in VIF and STRRED [2], provides a set of wavelets which allows for an (overcomplete) multi-scale multi-orientation decomposition of images.</p>
+<p>Finally, let us talk about information theory. In my opinion, information theory is the most beautiful offshoot of probability theory. The goal of information theory, as one would guess, is to characterize the amount of information stored in &lsquo;&lsquo;sources&rsquo;&rsquo;, which are random variables.</p>
+<p>The amount of information in, or randomness of, a random variable $ X $ is called its entropy. Mathematically, the (Shannon) entropy of a random variable having a probability mass function $f(x)$ is given by
+$$ H(X) = -E[\log f(X)] $$</p>
+<p>This function satisfies properties that we would expect a randomness measure to satisfy. First, we would like the amount of randomness to always be non-negative, which is true of Shannon Entropy (See 
+<a href="http://www.cs.yorku.ca/~kosta/CompVis_Notes/jensen.pdf" target="_blank" rel="noopener">Jensen&rsquo;s Inequality</a>). Second, if a random variable is constant, i.e. $Pr[X = x] = 1$ for some $x$, then it has zero randomness and its entropy is 0. Finally, the uniform distribution has the highest entropy (among all distributions having the same size of support).</p>
+<p>Let us now bring in a friend. Let $Y$ be another random variable, which is <strong>not</strong> independent of $X$ (I said &lsquo;&lsquo;friend&rsquo;'). We can ask the question, &ldquo;how much information is in $X$ if I already know $Y$&rdquo;? To answer this quantitatively, we compute the conditional entropy. To calculate this, we first consider the entropy of the conditional distribution of $X$ when we are given each possible of $Y$, i.e.,
+$$H(X | Y = y) = E_{X|Y = y}\left[-\log f(x | Y = y)\right] $$</p>
+<p>But we only assumed that we knew $Y$, not that $Y$ took any particular value. So, we average this over all possible values of $Y$ to get the conditional entropy
+$$ H(X|Y) = E[H(X|Y = y)] $$</p>
+<p>Based on entropy and conditional entropy, we define the mutual information (MI) of two random variables $X$ and $Y$ which, as the name suggests, characterizes the amount of information each variable has about the other. The intuition for the mathematical expression for MI is as follows. Let us say that $X$ has information (entropy) $H(X)$. But, if we are given the random variable $Y$, its information content decreases (it will not increase) to  $H(X|Y)$. Then, the difference is the amount of information about $X$ that we have obtained from $Y$. So, the MI between $X$ and $Y$ is defined as
+$$ I(X;Y) = H(X) - H(Y|X) = H(Y) - H(X|Y) $$</p>
+<p>Now let us briefly look at its properties. As suggested by the expression, the MI is symmetric, i.e. the MS between $X$ and $Y$ is equal to the MI between $Y$ and $X$. After all, we called it <em>mutual</em> information. Secondly, the MI between two random variables is non-negative. If knowing $Y$ means we know $X$ exactly, $H(X|Y)=0$ (because $X$ is known deterministically, there is no randomness) and the MI is just the information in $X$, i.e. $H(X)$. If $X$ and $Y$ are independent random variables, $H(X|Y) = H(X)$ and the MI is zero, which is what we would expect.</p>
+<p>I must confess, I played a little bait and switch routine over the last few paragraphs. I allured you with the promise of continuous random variables (random vectors, even!), but defined these information-theoretic quantities only for discrete distributions. For continuous random variables, we define these quantities in analogous ways, using the pdf instead of the probability mass functions, although some pleasant properties are lost.</p>
+<p>We are finally ready to discuss the three information-theoretic quality models in question. Let us begin with VIF. VIF assumes a statistical model of the natural source (the GSM model discussed above), a distortion channel which distorts this &lsquo;&lsquo;pristine&rsquo;&rsquo; image, and an additive noise model of the human visual system (HVS). We can illustrate the VIF model as below.</p>
+<div class="mermaid">
+graph LR;
+  A[Source] --> B[HVS]
+  B --> C[Receiver]
+  A --> D[Distortion Channel]
+  D --> E[HVS]
+  E --> F[Receiver]
+</div>
+<p>So, in line with our source model, let us define the source random variable as a GSM distributed random vector</p>
+<p>$$ C = S \cdot U $$</p>
+<p>The distortion channel is described as having a deterministic scalar gain $g$ and an additive White Gaussian Noise (AWGN) $V \sim \mathcal{N}(0, \sigma_v^2 I)$. So, the distorted random variable is given by</p>
+<p>$$ D = g \cdot C + V $$</p>
+<p>Finally, we model the neural noise of the HVS as an AWGN channel having $N, N&rsquo; \sim \mathcal{N}(0, \sigma_n^2)$. The final received pristine and distorted images are given by</p>
+<p>$$ E = C + N = S \cdot U + N$$
+$$ F = D + N&rsquo; = g \cdot S \cdot U + V + N&rsquo; $$</p>
+<p>We condition all quantities on knowing $S$ because knowing $S$ allows us to predict VIF for our particular pair of reference and test images, instead of a general average case. The intuition here is that upon distortion, lesser information about the source is retained in the distorted image. So, the VIF index is defined as
+$$ VIF = \frac{I(C; E | S = s)}{I(C; F | S = s)} $$</p>
+<p>Conveniently, conditioning on $S$ results in all RVs becoming Gaussians, whose entropies are easy to compute. For an image having $N$ samples of dimension $d$, if the covariance matrix has eigenvalues $
+\lambda_j$, the mutual informations can be calculated easily as
+$$ I(C; E | S = s) = \sum\limits_{i=1}^{N}\sum_{j=1}^{d} \log\left(1 + \frac{s_i^2\lambda_j}{\sigma_n^2}\right) $$
+$$ I(C; F | S = s) = \sum\limits_{i=1}^{N}\sum_{j=1}^{d} \log\left(1 + \frac{g_i^2 s_i^2 \lambda_j}{\sigma_v^2 + \sigma_n^2}\right) $$</p>
+<p>If you have made it this far, congratulations! You now know what natural scene statistics and information-theoretic quality models look like. We will end by briefly commenting on the implementation details. In practice, both the reference and test images are first transformed into the Wavelet domain using the Steerable Pyramid. The coefficients (which look like filtered images) are collected in 3x3 blocks and modelled as 9-dim vectors $C_i$ and $D_i$ respectively.</p>
+<p>What remains is to find the parameters of the GSM distribution and the distortion channel from these wavelet coefficients. The HVS is assumed to have a known channel noise $ \sigma_n^2 = 0.1 $. Because these parameter estimation details are not a part of the core idea behind VIF, I will just state them without proof.</p>
+<p>$$ \Sigma = \frac{1}{N} \sum C_i C_i^T $$
+$$ s_i = \frac{C_i^T \Sigma^{-1} C_i}{9} $$
+$$ g_i = \frac{Cov(C, D)}{Cov(D, D)} $$
+$$ \sigma_{v,i}^2 = Cov(D, D) - g_i Cov(C, D)$$</p>
+<p>Note that the covariances in the last two equations are scalar covariances calculated in corresponding local neighbourhoods of wavelet coefficients. And there we have it - VIF! Admittedly, this post turned out to be <em>much</em> longer than I had anticipated. But, it is a good thing because I will write about STRRED and SpEED-QA [5] next, which use these same concepts, but differently. So now, even though you may not realize it, you know enough to understand two more information-theoretic quality models.</p>
 <h1 id="references">References</h1>
-<p>[1] Micheal A. Wirth. Texture Analysis 
-<a href="http://www.cyto.purdue.edu/cdroms/micro2/content/education/wirth06.pdf" target="_blank" rel="noopener">Link</a></p>
-<p>[2] Mihran Tuceryan and Anil K. Jain. Texture Analysis. <em>Handbook of Pattern Recognition and Computer Vision</em> 
-<a href="https://www.worldscientific.com/doi/abs/10.1142/9789814343138_0010" target="_blank" rel="noopener">Link</a></p>
-<p>[3] R. M. Haralick and K. Shanmugam and I. Dinstein. Textural Features for Image Classification. <em>IEEE Transactions on Systems, Man, and Cybernetics, 1973</em> 
-<a href="http://haralick.org/journals/TexturalFeatures.pdf" target="_blank" rel="noopener">Link</a></p>
-<p>[4] Hui-Hua Wu and Shanhe Wu. Various proofs of the Cauchy-Schwarz inequality. 
-<a href="https://www.statisticshowto.com/wp-content/uploads/2016/06/Cauchy-Schwarzinequality.pdf" target="_blank" rel="noopener">Link</a></p>
-<p>[5] Kenneth I. Laws. Rapid Texture Identification. <em>Optics &amp; Photonics, 1980</em> 
-<a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/0238/0000/Rapid-Texture-Identification/10.1117/12.959169.short" target="_blank" rel="noopener">Link</a></p>
+<p>[1] Hamid R. Sheikh and Alan C. Bovik. Image Information and Visual Quality. <em>IEEE Transactions on Image Processing, 2006</em> 
+<a href="https://live.ece.utexas.edu/publications/2004/hrs_ieeetip_2004_imginfo.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[2] Rajiv Soundararajan and Alan C. Bovik, Video quality assessment by reduced reference spatio-temporal entropic differencing. <em>IEEE Transactions on Circuits and Systems for Video Technology, 2013</em> 
+<a href="https://www.live.ece.utexas.edu/publications/2013/Rajiv%20%20Video-RRED%20Paper.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[3] Martin J. Wainwright and Eero P. Simoncelli. Scale Mixtures of Gaussians and the Statistics of Natural Images. <em>Proceedings of the 12th International Conference on Neural Information Processing Systems. 1999</em> 
+<a href="https://papers.nips.cc/paper/1750-scale-mixtures-of-gaussians-and-the-statistics-of-natural-images.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[4] Eero P. Simoncelli and William T. Freeman. The Steerable Pyramid: A Flexible Architecture For Multi-Scale Derivative Computation. <em>IEEE Conference on Image Processing, 1995</em> 
+<a href="https://www.cns.nyu.edu/pub/eero/simoncelli95b.pdf" target="_blank" rel="noopener">Link</a></p>
+<p>[5] Christos G. Bampis and Praful Gupta and Rajiv Soundararajan and Alan C. Bovik. SpEED-QA: Spatial Efficient Entropic Differencing for Image and Video Quality. <em>IEEE Signal Processing Letters, 2017</em> 
+<a href="http://www.christosbampis.info/uploads/d4e7f73994efae5148ba6617684696b07b31.pdf" target="_blank" rel="noopener">Link</a></p>
 
     </div>
 
@@ -858,8 +869,7 @@ These TEM filters are used to filter images and compute the local texture energy
 
 
   
-    
-    
+  
 
 
 
@@ -988,7 +998,6 @@ These TEM filters are used to filter images and compute the local texture energy
   
 
 
-  
 
 
 
@@ -1007,15 +1016,7 @@ These TEM filters are used to filter images and compute the local texture energy
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/post/nss-and-vif/">Natural Scene Statistics and Visual Information Fidelity</a></li>
-      
-      <li><a href="/post/the-tourist/">The Tourist</a></li>
-      
-      <li><a href="/post/the-old-mans-tale/">The Old Man&#39;s Tale</a></li>
-      
-      <li><a href="/post/in-search-of-swaraj/">In Search of Swaraj</a></li>
-      
-      <li><a href="/post/the-five-stages-of-summer/">The Five Stages of Summer</a></li>
+      <li><a href="/post/texture-feature/">Texture Features</a></li>
       
     </ul>
   </div>
