@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.">
+  <meta name="description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://abhinaukumar.github.io/post/texture-feature/">
@@ -254,7 +254,7 @@
   <meta property="og:site_name" content="Abhinau Kumar">
   <meta property="og:url" content="https://abhinaukumar.github.io/post/texture-feature/">
   <meta property="og:title" content="Texture Features | Abhinau Kumar">
-  <meta property="og:description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."><meta property="og:image" content="https://abhinaukumar.github.io/post/texture-feature/featured.jpg">
+  <meta property="og:description" content="This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis."><meta property="og:image" content="https://abhinaukumar.github.io/post/texture-feature/featured.jpg">
   <meta property="twitter:image" content="https://abhinaukumar.github.io/post/texture-feature/featured.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -308,7 +308,7 @@
       "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis."
+  "description": "This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis."
 }
 </script>
 
@@ -776,10 +776,10 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.</p>
+      <p>This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis.</p>
 <p>But, what is texture? Simply, &lsquo;&lsquo;texture&rsquo;&rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &lsquo;&lsquo;texture&rsquo;&rsquo;.</p>
 <p>Texture can also be thought of as local &lsquo;&lsquo;complexity&rsquo;&rsquo;. The first square in our example had two plain regions, so it was &lsquo;&lsquo;simple&rsquo;&rsquo;, while the checkerboard pattern is more &lsquo;&lsquo;complex&rsquo;&rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &lsquo;&lsquo;simple&rsquo;&rsquo; or &lsquo;&lsquo;plain&rsquo;&rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.</p>
-<p>What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification, and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass, because they have different textures.</p>
+<p>What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass because they have different textures.</p>
 <p>We will now look at features that we can use to describe textures. Currently, I&rsquo;m not interested in specific algorithms. My goal is to find ways to &lsquo;&lsquo;describe&rsquo;&rsquo; texture. This will also not be an exhaustive review of all texture features. After all, texture is not the focus of my work. Learning this is just the means to an end, so I will only go so far as I need to.</p>
 <p>Most of my reading has used this presentation [1] and this review article [2] as jumping points to other sources wherever necessary.</p>
 <h1 id="first-order-statistical-features">First-Order Statistical Features</h1>
@@ -787,7 +787,7 @@
 <h1 id="gray-level-co-occurence-matrix-glcm">Gray Level Co-occurence Matrix (GLCM)</h1>
 <p>The Gray Level Co-occurence Matric (GLCM) is arguably the most common method of describing textures. The GLCM records second-order statistics, because it depends on pairs of pixels, storing information about the relative positions of pixels having similar intensity values. Given an offset  $\delta = (\delta x, \delta y)$ , the GLCM is a $256 \times 256$ matrix counting the co-occurence of gray levels at an offset  $ \delta $ . That is, we construct a matrix whose entries are
 $$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta y,y+\delta y] = j) $$</p>
-<p>The entries of this matrix are then normalized by the sum of all entries, giving us a normalized GLCM, say  $ P_\delta $ , which is a valid probability mass function. While the GLCM itself is not used to, say, compare textures, we derive numerical features from these which are used to describe texture. Some examples of such features are</p>
+<p>The entries of this matrix are then normalized by the sum of all entries, giving us a normalized GLCM, say  $ P_\delta $, which is a valid probability mass function. While the GLCM itself is not used to, say, compare textures, we derive numerical features from these which are used to describe texture. Some examples of such features are</p>
 <ul>
 <li><strong>Maximum</strong> :  $ \max P_\delta[i,j] $ , i.e., the most likely pair of intensities.</li>
 <li><strong>Order $ k $ difference moment</strong> : $ E[(i-j)^k)] $ , or its inverse  $ E[1/(i-j)^k] $ . A special case of this is the contrast, which is the 2nd difference moment, i.e.,  $ E[(i-j)^2] $ .</li>
@@ -795,22 +795,22 @@ $$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta 
 <li><strong>Entropy</strong>: $ E[-\log P_\delta[i,j]] $ , which is a measure of the &lsquo;&lsquo;spread&rsquo;&rsquo; or the amount of information in the distribution.</li>
 <li><strong>Correlation</strong>: $ \frac{E[ij] - \mu_i\mu_j}{\sigma_i \sigma_j} $  which is high when pixels have a linear dependence.</li>
 </ul>
-<p>Haralick [3] defined 14 texture features based on the GLCN. In a similar vein, the Gray Level Difference statistics (GLDS) are derived from a vector of 256 values, which count the number of times each difference  $ \lvert i-j\rvert $  occurs between pairs of intensity values separated by a distance  $ \delta $ .</p>
-<p>A main drawback of the GLCM and the GLDS is finding a good choice of  $ \delta $ . In the current deep learning/gradient-based optimization era, I would add that the non-differentiability of the counting process is an added drawback.</p>
+<p>Haralick [3] defined 14 texture features based on the GLCN. In a similar vein, the Gray Level Difference statistics (GLDS) are derived from a vector of 256 values, which count the number of times each difference  $ \lvert i-j\rvert $  occurs between pairs of intensity values separated by a distance  $ \delta $.</p>
+<p>A main drawback of the GLCM and the GLDS is finding a good choice of  $ \delta $. In the current deep learning/gradient-based optimization era, I would add that the non-differentiability of the counting process is an added drawback.</p>
 <h1 id="autocorrelation-function">Autocorrelation Function</h1>
-<p>The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $  the ACF is defined as</p>
+<p>The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $,  the ACF is defined as</p>
 <p>$$ \rho(u,v) = \frac{\sum_x \sum_y I(x,y) I(x+u, y+v)}{\sum_x\sum_y I^2(x,y)} $$</p>
 <p>The auto-correlation function is a function of the &lsquo;&lsquo;offset&rsquo;&rsquo; between pairs of pixels. Given an offset, we multiply corresponding intensity values and consider the normalized sum. Why is this relevant? When the offset is close to the &lsquo;&lsquo;true&rsquo;&rsquo; offset between similar texture elements, the value of the ACF is close to 1, which is its highest value.</p>
 <p>Why is this the case? The short technical answer is &lsquo;&lsquo;Cauchy-Schwarz Inequality&rsquo;&rsquo;. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &lsquo;&lsquo;test&rsquo;&rsquo; various offsets. When we choose the correct offset, the repeating intensities &lsquo;&lsquo;line up&rsquo;&rsquo;, so they get squared in the summation, leading to an ACF value close to 1. When we choose an &lsquo;&lsquo;incorrect&rsquo;&rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &lsquo;&lsquo;lining up&rsquo;&rsquo; is a good thing.</p>
-<p><img src="cs_ineq.png" alt="Visualizing Cauchy-Scwarz Inequality"></p>
-<p>At this point, much like Dumbledore to Harry on the Astronomy tower, I must ask for your trust in believing that squaring values when lining up is the &lsquo;&lsquo;best&rsquo;&rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].</p>
-<p>Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shifts to fall out of, or out of phase with, the texture. On the other hand, fine textures cause sharp drop in the ACF.</p>
+<p><img src="cs_ineq.png" alt="Visualizing Cauchy-Schwarz Inequality"></p>
+<p>At this point, much like Dumbledore to Harry on the Astronomy Tower, I must ask for your trust in believing that squaring values when lining up is the &lsquo;&lsquo;best&rsquo;&rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].</p>
+<p>Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shift to fall out of, or out of phase with, the texture. On the other hand, fine textures cause a sharp drop in the ACF.</p>
 <h1 id="signal-processing-methods">Signal Processing Methods</h1>
-<p>We begin with the simple observation that the coarseness of texture in a region is related to the density of edges in that region. Fine textures have higher edge density compared to coarse textures. To extract these features we can use edge operators like the Laplacian operator.</p>
+<p>We begin with the simple observation that the coarseness of texture in a region is related to the density of edges in that region. Fine textures have a higher edge density compared to coarse textures. To extract these features we can use edge operators like the Laplacian operator.</p>
 <p>Another set of filters is used to calculate the  $ (p+q) $  th moment of an image region  $ \mathcal{R} $
 $$  m_{p,q}(x,y) = \sum_{(u,v) \in \mathcal{R}} u^p v^q I(u,v)  $$</p>
 <p>Choosing the region  $ \mathcal{R} $  to be a rectangular region, we can implement this as a linear filter having the appropriate weights.</p>
-<p>Perceptually motivated methods use filters that better represent the preattentive perception in the Human Visual System (HVS). Gabor filters, which are complex exponentials having a Gaussian envelope, are a good model of simple cells in the primary visual cortex. Because these filters are both frequency and orientation selective, they are used to conduct multi-scale multi-orientation analysis of images.</p>
+<p>Perceptually motivated methods use filters that better represent the preattentive perception in the Human Visual System (HVS). Gabor filters, which are complex exponentials having a Gaussian envelope, are a good model of simple cells in the primary visual cortex. Because these filters are both frequency and orientation-selective, they are used to conduct a multi-scale multi-orientation analysis of images.</p>
 <p>To derive texture features, an image to passed through a Gabor filter bank to obtain subbands  $ r_i(x,y) $ . These responses are passed through a sigmoid non-linearity  $ \sigma $  (tanh function) and used to obtain texture features
 \begin{equation}
 f_i(x,y) = \sum_{(u,v) \in \mathcal{R}} |\sigma(r_i(u,v))|
