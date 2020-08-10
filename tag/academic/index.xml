@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Academic | Abhinau Kumar</title>
-    <link>nownowk.github.io/tag/academic/</link>
-      <atom:link href="nownowk.github.io/tag/academic/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://nownowk.github.io/tag/academic/</link>
+      <atom:link href="https://nownowk.github.io/tag/academic/index.xml" rel="self" type="application/rss+xml" />
     <description>Academic</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 08 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Academic</title>
-      <link>nownowk.github.io/tag/academic/</link>
+      <link>https://nownowk.github.io/tag/academic/</link>
     </image>
     
     <item>
       <title>Texture Features</title>
-      <link>nownowk.github.io/post/texture-feature/</link>
+      <link>https://nownowk.github.io/post/texture-feature/</link>
       <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>nownowk.github.io/post/texture-feature/</guid>
+      <guid>https://nownowk.github.io/post/texture-feature/</guid>
       <description>&lt;p&gt;This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurence matrices, and/or signal processing methods, either simple filtering and energy based methods, or as a method of pre-processing before applying statistical analysis.&lt;/p&gt;
 &lt;p&gt;But, what is texture? Simply, &amp;lsquo;&amp;lsquo;texture&amp;rsquo;&amp;rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &amp;lsquo;&amp;lsquo;texture&amp;rsquo;&amp;rsquo;.&lt;/p&gt;
 &lt;p&gt;Texture can also be thought of as local &amp;lsquo;&amp;lsquo;complexity&amp;rsquo;&amp;rsquo;. The first square in our example had two plain regions, so it was &amp;lsquo;&amp;lsquo;simple&amp;rsquo;&amp;rsquo;, while the checkerboard pattern is more &amp;lsquo;&amp;lsquo;complex&amp;rsquo;&amp;rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &amp;lsquo;&amp;lsquo;simple&amp;rsquo;&amp;rsquo; or &amp;lsquo;&amp;lsquo;plain&amp;rsquo;&amp;rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.&lt;/p&gt;
