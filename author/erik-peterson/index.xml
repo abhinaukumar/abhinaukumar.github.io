@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Erik Peterson | Abhinau Kumar</title>
-    <link>https://nownowk.github.io/author/erik-peterson/</link>
-      <atom:link href="https://nownowk.github.io/author/erik-peterson/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://abhinaukumar.github.io/author/erik-peterson/</link>
+      <atom:link href="https://abhinaukumar.github.io/author/erik-peterson/index.xml" rel="self" type="application/rss+xml" />
     <description>Erik Peterson</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 09 Aug 2020 16:38:12 -0500</lastBuildDate>
     <image>
-      <url>https://nownowk.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Erik Peterson</title>
-      <link>https://nownowk.github.io/author/erik-peterson/</link>
+      <link>https://abhinaukumar.github.io/author/erik-peterson/</link>
     </image>
     
     <item>
       <title>Better Safe than Sorry: Evidence Accumulation Allows for Safe Reinforcement Learning</title>
-      <link>https://nownowk.github.io/publication/safe-reinforcement-learning/</link>
+      <link>https://abhinaukumar.github.io/publication/safe-reinforcement-learning/</link>
       <pubDate>Sun, 09 Aug 2020 16:38:12 -0500</pubDate>
-      <guid>https://nownowk.github.io/publication/safe-reinforcement-learning/</guid>
+      <guid>https://abhinaukumar.github.io/publication/safe-reinforcement-learning/</guid>
       <description></description>
     </item>
     
