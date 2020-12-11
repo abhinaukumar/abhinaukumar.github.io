@@ -182,7 +182,8 @@ deterioration of the patient over the next 24 hours&lt;/li&gt;
 &lt;h1 id=&#34;the-models-we-tested&#34;&gt;The Models We Tested&lt;/h1&gt;
 &lt;p&gt;We can broadly divide the different trained models into three broad categories, baseline, advanced, and federated models. The baseline models consist of standard regression models like decision trees, linear regression, and support vector regressors, and ensemble models built on these base regressors.&lt;/p&gt;
 &lt;p&gt;Among the advanced models, we have Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and an interpretable RNN called the Reverse Time Attention (RETAIN) model.&lt;/p&gt;
-&lt;p&gt;We use the RETAIN and Federated Learning models to understand the tradeoffs in performance when enforcing interpretability and privacy, respectively.&lt;/p&gt;
+&lt;p&gt;We use the RETAIN and Federated Learning models to understand the tradeoffs in performance when enforcing interpretability and privacy, respectively. We report the performance of all our models using three metrics - the Mean Absolute Error (MAE), the (Root) Mean Squared Error (RMSE / MSE), and the $R^2$ score. While the MAE and the (R)MSE are self-explanatory, the $R^2$ score warrants explanation.&lt;/p&gt;
+&lt;p&gt;The $R^2$ score is the fraction of the variance in targets that is explained by the regression model. So, if the predictions are perfect, all the variance in the data is explained by the model, and the $R^2$ score achieves its maximum value of 1. If the model is naive and predicts the mean value of the target, irrespective of input, none of the variation is explained by the model and the $R^2$ score is 0. Note that the $R^2$ score can be negative, which means that the model performs worse than a naive constant-prediction model.&lt;/p&gt;
 &lt;h2 id=&#34;baseline-models&#34;&gt;Baseline Models&lt;/h2&gt;
 &lt;p&gt;We considered the following baseline regression models in our experiments.&lt;/p&gt;
 &lt;ol&gt;
@@ -1101,6 +1102,8 @@ As explained above, we interpret the RETAIN model by examining the coefficients 
 &lt;li&gt;The RETAIN model is able to match, and even out perform, traditional RNN models, with the added benefit of interpretability.&lt;/li&gt;
 &lt;li&gt;In most cases, the federated learning model can guarantee the confidentiality of patient data, while incurring a small sacrifice in performance.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;The code for all our experiments can be found at 
+&lt;a href=&#34;https://github.com/parvenkumar/datamining&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;some-caveats&#34;&gt;Some Caveats&lt;/h1&gt;
 &lt;p&gt;The eICU database is large and comprises of routinely collected clinical data in an eICU setting. However, the database also contains non-ICU stays (e.g., step down units SDUs). This means that some patients (patient unit stay ids) in our dataset could be from SDUs, rather than an actual ICU unit stay. Nevertheless, we do not expect this to affect our results because all our models use the same data, and we only analyze tradeoffs.&lt;/p&gt;
 &lt;p&gt;An important observation about our results is that models that did not have access to all records (and so, the last record), performed very poorly. Having access to all records is a profoundly impractical assumption, because simply knowing that we have all the records means knowing that the patient&amp;rsquo;s stay has ended, which renders predicting the LOS useless.&lt;/p&gt;
