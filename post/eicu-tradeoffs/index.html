@@ -1,0 +1,2251 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Abhinau Kumar">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://abhinaukumar.github.io/post/eicu-tradeoffs/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2b566e">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://abhinaukumar.github.io/post/eicu-tradeoffs/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@nownowk">
+  <meta property="twitter:creator" content="@nownowk">
+  
+  <meta property="og:site_name" content="Abhinau Kumar">
+  <meta property="og:url" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/">
+  <meta property="og:title" content="Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients | Abhinau Kumar">
+  <meta property="og:description" content="Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."><meta property="og:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg">
+  <meta property="twitter:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-12-10T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-12-10T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abhinaukumar.github.io/post/eicu-tradeoffs/"
+  },
+  "headline": "Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients",
+  
+  "image": [
+    "https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg"
+  ],
+  
+  "datePublished": "2020-12-10T00:00:00Z",
+  "dateModified": "2020-12-10T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Abhinau Kumar"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Abhinau Kumar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."
+}
+</script>
+
+  
+
+  
+
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#2b566e",
+          "text": "#fff"
+        },
+        "button": {
+          "background": "#fff",
+          "text": "#2b566e"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://www.cookiesandyou.com"
+      }
+    })});
+  </script>
+
+
+
+  
+
+
+
+
+
+  <title>Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients | Abhinau Kumar</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Abhinau Kumar</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Abhinau Kumar</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#accomplishments"><span>Accomplishments</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Academic Writing</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#writing"><span>Casual Writing</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span ><a href="/author/abhinau-kumar/">Abhinau Kumar</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    December 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/projects/">Projects</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 540px;">
+  <div style="position: relative">
+    <img src="/post/eicu-tradeoffs/featured_hu8172e0ed054a0c8052ac3d514cfdbade_150015_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Source: <a href="https://twistedsifter.com/2015/04/the-banyan-tree/"><strong>TwistedSifter</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h1 id="introduction-and-background">Introduction and Background</h1>
+<p>Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc., for continuous monitoring.  Data mining and predicting/projecting the remaining length of stay (rLOS) for a patient will help allocate resources efficiently and provide timely services to patients.</p>
+<p>The challenge for developing such a predictive model arises from the incomplete understanding of the complex clinical factors that may be involved and their interactions or relationships that lead to a specific LOS. This is a potential application for neural networks, which are considered universal function approximators. Since we are handling time-series data in the form of patient records, we mainly use CNNs and RNNs (and related architectures) to predict rLOS.</p>
+<p>In addition to having a predictive model, an accurate understanding of the factors that are closely associated with LOS can allow for efficient hospital resource management, savings to a healthcare system, and better patient care by reducing readmissions. In this regard, neural networks fall short, as they are not interpretable. This “black box” behavior of neural networks leads us to the first tradeoff that we consider in this blog – performance vs. interpretability.</p>
+<p>Also, the dataset is sensitive for the patients and must be protected. All countries have laws to protect privacy, leading to difficulties in the data collection phase. Many hospitals may refuse to share healthcare data without any Health Insurance Portability and Accountability Act (HIPAA) agreements or data governance in place. Therefore, we also investigated a Federated Learning framework to address such privacy issues.  This distributed learning framework leads us to the second tradeoff – performance vs. privacy security.</p>
+<h1 id="database">Database</h1>
+<p>The eICU Collaborative Research Database [2] is a multi-center intensive care unit database with high granularity data for over 200,000 admissions to ICUs monitored by eICU programs across the United States. The eICU database comprises 200,859 patient unit encounters for 139,367 unique patients admitted between 2014 and 2015 to 208 hospitals located throughout the US.</p>
+<p>The database is de-identified and includes vital sign measurements, care plan documentation, severity of illness measures, diagnosis information, treatment information, and more. The data is publicly available after registration, including completion of a training course on research with human subjects and signing of a data use agreement mandating responsible handling of the data and adhering to the principle of collaborative research.</p>
+<h1 id="data-preprocessing">Data preprocessing</h1>
+<p>To clean and preprocess the data, we use the same procedure used in [3]. To clean the data, we use several exclusion criteria.</p>
+<ol>
+<li>
+<p>We first only consider patients who are “adults,” i.e., patients who are between 18 and 89 years old.</p>
+</li>
+<li>
+<p>We only consider patients who have one ICU stay on record because we are interested in ICU length of stay, and we want to avoid ambiguity.</p>
+</li>
+<li>
+<p>We exclude patients who have less than 15 or more than 200 records to keep the length of inputs significant but not excessive.</p>
+</li>
+<li>
+<p>We exclude patients whose gender or hospital/ICU discharge status (alive vs. expired) are unknown.</p>
+</li>
+<li>
+<p>Finally, we only include records that lie between the times of admission and discharge, which corresponds to having positive offset and rLOS.</p>
+</li>
+</ol>
+<p>As a side note, we use the term “record” to refer to a set of 21 features collected at a time step, which is called an “offset.” After cleaning the data, we bin the offsets into hours. Within each hour, we consider the first record, and we impute its missing values with the average value over the hour. Often, features are missing over the entire hour, so we will need to impute values again at the hour level. We will discuss this “sparsity” of the database in further detail below. To handle these missing values, we follow the literature and use “typical” values of each feature.</p>
+<p>After cleaning and binning the data, we have a total of 74686 patients, leading to a total of just over 3.1 million records. We then split the data randomly to use 80% of the patients for training and 20% for testing. It is important to note that the records of each patient are assigned either to the training or the test set, but not both.</p>
+<p>We have several categorical variables, and some can take several values. For example, admission diagnosis can take almost 400 different values. So, we cannot use the one-hot encoding to represent these variables without adding a large number of features.</p>
+<p>Instead, we handle categorical variables by a method called “Target Encoding.” In target encoding, each value of a categorical variable is replaced by the average value of the target variable corresponding to all examples which have this value. More formally, the value $v$ of a categorical variable $X_j$ is replaced by</p>
+<p>$$E[Y | X_j = v]$$</p>
+<p>In some cases, we may see new values of the categorical variable in the test data that we have not encountered. In this case, we default to using the average value of the target variable instead of such a conditional average.</p>
+<p>In our code, we created a class TargetEncoder to carry this out, which adheres to the Scikit-Learn API format. So, in practice, target encoding variables in a dataset is as simple as</p>
+<pre><code>encoder = TargetEncoder()
+encoder.fit(X, y, ['column1', 'column2', 'column3'])
+X = encoder.transform(X)
+</code></pre>
+<p>Finally, we applied a “Min-Max Scaler” which maps the values of each feature to the range $[-1, 1]$. This kind of scaling helps improve the convergence of many machine learning models, especially those that use gradient-based optimization methods.</p>
+<h1 id="understanding-the-data">Understanding the Data</h1>
+<h2 id="sparsity">Sparsity</h2>
+<p>Before we begin training the models, it is useful to understand the nature of the database. As we have mentioned above, a notable feature of the database is its sparsity. This is not surprising because not every feature is recorded at each time step. Often, the frequency at which, say, oxygen saturation is measured may be higher than that at which blood glucose level or pH are measured. This is because oxygen saturation is easier to measure, and is not a diagnostic test specific to any disease.</p>
+<p>In the following figure, we show the fraction of missing values of each feature.</p>
+<p><img src="missing_barplot.png" alt="Fraction of missing values"></p>
+<p>In this plot, we plot the histogram of the number of missing features in each record.</p>
+<p><img src="row_missing_histogram.png" alt="Number of missing features in each record"></p>
+<p>From these two plots, it’s clear that the dataset is quite sparse, with almost most records missing at least three features. Also, the features that are missing the most often are the pH, glucose, and FiO2, which are likely measured only for specific patients, depending on the necessity. So, we don’t expect them to be missing completely at random (MCAR), and we cannot omit any records or features. As a result, imputation becomes a crucial data processing step. Also, because the data is time-series, imputing using the mean or median, which are common choices, can give undue weight to patients who have more records. So, to avoid these complex considerations, using “typical” values is a good practical choice.</p>
+<h2 id="visualizing-features-and-targets">Visualizing Features and Targets</h2>
+<p>After target encoding, we have converted all variables into numerical variables, so we can visualize their dependencies using the correlation plot below.</p>
+<p><img src="corrplot.png" alt="Pairwise correlation between features"></p>
+<p>Looking at the plot, it is not surprising that the height and the weight are highly correlated. Another interesting observation is that the features obtained from the Glasgow Coma Score (GCS) suite - GCS Total, Eyes, Verbal, Motor are all highly correlated. It is important to note that these features were originally categorical variables, so these correlations are over a small set of unique values. Other than these, the variables are weakly correlated, so we can expect that they provide diverse information about the LOS/rLOS targets.</p>
+<p>To round out the data visualization exercise, we show the histogram of lengths of stays below. Since most values lie in the range 0-20, we restrict the histogram to this range.</p>
+<p><img src="los_histogram.png" alt="Histogram of LOS (in days)"></p>
+<p>In the histogram, we can notice several local modes corresponding to integer values of LOS. We think this shows a natural bias of hospitals to discharge patients in whole numbers of days, perhaps due to administrative convenience.</p>
+<h2 id="looking-deeper">Looking Deeper</h2>
+<p>Beyond these summaries, we want to look a little deeper into the data. Specifically, we are interested in finding the effect of gender and ethnicity on the LOS and the discharge status - alive vs. expired. Such an analysis will help us uncover biases (conscious or otherwise) in the healthcare system that need to be addressed.</p>
+<p>To find the effect of gender on the LOS, we will compare the average LOS between male and female patients. Visually, we can illustrate the values in the form of the following box plot.</p>
+<p><img src="gender_los_boxplot.png" alt="LOS by gender"></p>
+<p>Analytically, because we want to compare the means of two groups, we will use a statistical test called the “independent t-test.” We will skip the details here, but 
+<a href="https://conjointly.com/kb/statistical-student-t-test/" target="_blank" rel="noopener">this</a> blog post is a good resource to learn about the t-test. The t-test returned a “p-value” of about $10^{-3}$. Loosely speaking, a low p-value means that our observations are very unlikely if the means were the same. So, we say that the difference in the means is “significant,” i.e., the mean LOS in ICUs depends on gender. We see from the data that men have a larger average LOS, and from the box plot, we see that men are also more likely to have abnormally high LOS when compared to women.</p>
+<p>We can ask the same question of ethnicity. The dataset contains patients of the following ethnicities - Asian, African American, Caucasian, Hispanic, Native American, Other/Unknown. Once again, we can visualize the data using a box plot.</p>
+<p><img src="ethnicity_los_boxplot.png" alt="LOS by ethnicity"></p>
+<p>But now that we have more than two groups, we use an F-test (also called a one-way analysis of variance), which compares the means of several groups. The p-value returned by the F-test was $10^{-17}$, so once again, the test is “significant,” and the mean LOS varies with ethnicity. From the data, we see that African-American patients have the longest stays, while Native Americans have the shortest. We also see from the box plot that Caucasian patients are more likely to have abnormally high LOS when compared to Asian, Hispanic, or Native American patients.</p>
+<p>To investigate the effect of gender on discharge status, we can tabulate the number of men and women who were discharged alive or expired. Such a table is called a “contingency table.”</p>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Alive</th>
+<th>Expired</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Female</td>
+<td>31943 (94%)</td>
+<td>2054 (6%)</td>
+</tr>
+<tr>
+<td>Male</td>
+<td>38146 (93.8%)</td>
+<td>2543 (6.2%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+Analytically, we want to test if the discharge status depends on gender. Because we are testing the dependence between two categorical variables, we use a $\chi^2$ test of indepence. For a $\chi^2$ test, the p-value is the probability of observing the data if the two quantities (gender and discharge status, in our case) are independent. So, a low p-value means that the two quantities are dependent. The p-value returned by the $\chi^2$ test was 0.245, which means that we did not find a significant dependence between discharge status and gender.
+<p>As above, we can compute a similar contingency table to analyze the effect of ethnicity on discharge status.</p>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Ethnicity / Discharge Status</th>
+<th>Alive</th>
+<th>Expired</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unknown/Other</td>
+<td>4075 (93.3%)</td>
+<td>291 (6.7%)</td>
+</tr>
+<tr>
+<td>Asian</td>
+<td>1136 (94.3%)</td>
+<td>69 (5.7%)</td>
+</tr>
+<tr>
+<td>African American</td>
+<td>7667 (94.5%)</td>
+<td>442 (5.4%)</td>
+</tr>
+<tr>
+<td>Caucasian</td>
+<td>54007 (93.7%)</td>
+<td>3609 (6.3%)</td>
+</tr>
+<tr>
+<td>Hispanic</td>
+<td>2818 (94.9%)</td>
+<td>151 (5.1%)</td>
+</tr>
+<tr>
+<td>Native American</td>
+<td>386 (91.7%)</td>
+<td>35 (8.3%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Applying a $\chi^2$ test again, the p-value that we obtained was $10^{-3}$, which means that the test was significant; the discharge status does depend on ethnicity. From the contingency table, we see that Native Americans are significantly more likely to die in ICUs than patients of other ethnicities. This may explain the shorter ICU stays.</p>
+<p>A more detailed exploratory analysis of the dataset can be found in [4].</p>
+<h1 id="related-work">Related Work</h1>
+<p>Our proposed work follows the footsteps of other researchers who answer similar problems using the same, or similar, data. Harutyunyan et al. [5] trained a multi-task RNN model on the MIMIC-III [6] database to perform</p>
+<ol>
+<li>In-hospital mortality prediction, based on the first 48 hours of ICU stay</li>
+<li>Decompensation prediction, as an early-warning system to predict the rapid
+deterioration of the patient over the next 24 hours</li>
+<li>Length of stay prediction</li>
+<li>Phenotype classification, classifying which of 25 acute care conditions are present in the patient’s record</li>
+</ol>
+<p>The use of a multi-task model leads to significant feature reuse and a reduction in the total computational load during inference.</p>
+<p>Rajabalizadeh et al. [4] conducted an exploratory analysis of the eICU dataset, quantifying the distribution of frequencies of visits, co-presence of diagnoses, racial bias, etc. They also show that the Acute Physiology Age Chronic Health Evaluation (APACHE) III system does not predict LOS well.</p>
+<p>Sheikhalishahi et al. [3] proposed a Bidirectional Long Short Term Memory (BiLSTM) model to perform the same four tasks. An important difference between the two models, aside from being trained on different databases, is that Sheikhalishahi et al. use a single-task BiLSTM, while Rajabalizadeh et al. use a multi-task RNN model.</p>
+<p>Other than unsupervised and supervised methods, reinforcement learning (RL) models have also been developed using the eICU database. Komorowski et al. Komorowsksi et al. [7] trained an RL agent to learn an optimal “clinician policy,” to reduce the mortality risk of patients. The agent was trained and validated using the MIMIC-III database, while the eICU database was used for model testing.</p>
+<h1 id="models">Models</h1>
+<p>We can broadly divide the different trained models into three broad categories, baseline, advanced, and federated models. The baseline models consist of standard regression models like decision trees, linear regression, and support vector regressors, and ensemble models built on these base regressors.</p>
+<p>Among the advanced models, we have Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and an interpretable RNN called the Reverse Time Attention (RETAIN) model.</p>
+<p>We use the RETAIN and Federated Learning models to understand the tradeoffs in performance when enforcing interpretability and privacy, respectively.</p>
+<h2 id="baseline-models">Baseline Models</h2>
+<p>We considered the following baseline regression models in our experiments.</p>
+<ol>
+<li>Decision trees</li>
+<li>Regularized linear models (Ridge, LASSO)</li>
+<li>Support Vector Machines (SVM)</li>
+</ol>
+<p>We also considered the following ensemble models</p>
+<ol>
+<li>Random forest regressor (RF)</li>
+<li>Extreme gradient boosting (XGB)</li>
+<li>Light gradient boosting machines (LGBM).</li>
+</ol>
+<p>We chose this set of models because of their simplicity and the ease of output interpretation. Many of these models are also commonly used in the bio-sciences and medical communities, thus providing a robust comparison of the tradeoffs we explore in this blog. We will explain and compare these models in subsequent sections.</p>
+<h3 id="decision-trees-dt">Decision Trees (DT)</h3>
+<p>The main idea behind Decision Trees (DTs) is to create a model that predicts the target variable (rLOS or LOS) by learning simple decision rules deduced from the 21 data features. Three models (each with a different set of inputs) were explored with decision trees. We will call them BMDT1, BMDT2, and BMDT3 for purposes of model tracking in this blog.</p>
+<p>We used the Scikit-Learn library module <code>Decision Tree Regressor</code> to build our DT regressors. The default criterion of &ldquo;mean square error&rdquo; was used as the objective. This criterion minimizes the L2 loss when using the mean from each terminal node.</p>
+<p>We trained the BMDT1 model on the entire database to predict the rLOS, considering each record as an independent sample. We also trained an optimized version of this model, where the best parameters were found using a grid search.</p>
+<p>The parameter ranges for grid search were varied based on the $R^2$ results achieved from predicting the training data ground truth values. The BMDT1 model was the worst-performing DT model based on our comparison metrics ($R^2$ on test data). We also used this model to test for feature robustness by using features without target encoding or feature scaling.</p>
+<p>To train the BMDT2 models, we used either the first or the last record of each patient as a proxy for the whole time-series data. The BMDT2 models also differ from BMDT1 because they predict the LOS instead of the rLOS.</p>
+<p>We modify the BMDT2 models by using the number of records (offsets) for a patient as an input feature, instead of the offset itself. This engineered feature is a way for baseline models to include some information about the time-series portion of the data. We call this model BMDT3.</p>
+<p>It is natural to expect that that offset of the last record is very indicative of the LOS of the patient. So, we would expect the baseline models that were trained on the last record to perform very well. We will show the impact of using the last record, in our results.</p>
+<h3 id="more-baselines-ridge-lasso-svm-rf-xgb-lgbm">More Baselines (Ridge, Lasso, SVM, RF, XGB, LGBM)</h3>
+<p>Until now, we have just tried various features and different training methods using the decision tree regressor as an example. Here we branch out to try more popular baseline regression models to get a sense of how these regressors perform on this dataset. These models include 
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html" target="_blank" rel="noopener">Ridge</a>, 
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html" target="_blank" rel="noopener">Lasso</a>, 
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank" rel="noopener">SVM</a>, 
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html" target="_blank" rel="noopener">RF</a>, 
+<a href="https://xgboost.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">XGB</a>, and 
+<a href="https://lightgbm.readthedocs.io/en/latest/" target="_blank" rel="noopener">LGBM</a>.</p>
+<p>We used the best two groups of features we observed in decision trees - one is to predict the LOS using the features of the first record and an additional feature, the number of records, for each patient; another one is to predict the LOS using the last record (including the last offset as the 21st feature) of features.</p>
+<p><strong>Linear Models</strong>: A linear model fits a multiple linear regression with coefficents $w=(w_1,…,w_p)$ to minimize the residual sum of squares, $||Xw-y||^2_2$, between the observed targets in the dataset and the predictions. Ridge is a variant of multiple linear regression that imposes an $L_2$ penalty on the size of the coefficents: $||Xw-y||^2_2+\alpha||w||^2_2$. On the other hand, Lasso imposes an $L_1$ penalty on the size of the coeffiicents: $||Xw-y||^2_2+\alpha||w||_1$. As a result, Lasso produces sparser results as compared to Ridge, i.e., it typically has a higher number of zero coefficients.</p>
+<p><strong>Support Vector Regression</strong>: SVM is a maximum-margin method that only penalizes the points that lie closest to the decision boundary of the classifier. SVR is an extension of SVM to the regression problem, where the model depends only on a subset of the training data because the cost function ignores samples whose prediction is close to their target. Since SVR with non-linear kernels scales poorly with data and feature dimension, we stuck to a Linear SVR.</p>
+<p><strong>Random Forest</strong>: RF is an ensemble of many decision trees that are built from bootstrap samples from the training set. A bootstrap sample is obtained by randomly sampling the training set with replacement.
+Another layer of randomness is introduced by fitting each node during the construction of a tree on a random subset of features. RF has been shown to have very good generalization properties compared to many other models.</p>
+<p><strong>XGBoost</strong>: XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible, and portable. It implements machine learning algorithms under the Gradient Boosting framework. XGBoost provides a parallel tree boosting (also known as GBDT, GBM) that solve many data science problems in a fast and accurate way. XGBoost scales well to run on major distributed environments like Hadoop, SGE, and MPI and can solve problems beyond billions of examples.</p>
+<p><strong>Light GBM</strong>: LightGBM is a gradient boosting framework that uses tree-based learning algorithms. The main advantages of LightGBM are faster training speed, higher efficiency, lower memory usage, better accuracy, support of parallel and GPU learning, and the capability to handle large-scale data.</p>
+<p><strong>Hyperparameter tuning</strong>: The performance of regressors is greatly dependent on their hyperparameters. So, we adopted a randomized grid search cross-validation on the training set to search for the best hyperparameters. However, there is no standard on how to select the parameter range for each regression model. We referred to both official 
+<a href="https://scikit-learn.org/stable/" target="_blank" rel="noopener">Scikit-learn</a> documents and unofficial blogs to get an empirical parameter search space for each model. The final parameter search spaces are as follows:
+Ridge:</p>
+<pre><code class="language-python">param_grid = {'alpha': np.logspace(-3, 3, 10)}
+</code></pre>
+<p>Lasso:</p>
+<pre><code class="language-python">param_grid = {'alpha': np.logspace(-5, 0, 10)}
+</code></pre>
+<p>LinearSVR</p>
+<pre><code class="language-python">param_grid = {'C': np.logspace(-5, 15, 15, base=2)}
+</code></pre>
+<p>RF</p>
+<pre><code class="language-python">param_grid = {'n_estimators': [100, 200, 300, 400, 500],
+                'max_features': ['auto', 'sqrt'],
+                'max_depth': [3, 4, 5, 6, 7, 9],
+                'min_samples_split': [2, 5, 10, 15],
+                'min_samples_leaf': [1, 2, 5],
+                'bootstrap': [True, False]}
+</code></pre>
+<p>XGBoost</p>
+<pre><code class="language-python">param_grid = {'max_depth': range(3,12),
+                'min_child_weight': range(1,10),
+                'gamma': list([i/10.0 for i in range(0,5)]),
+                'subsample': list([i/10.0 for i in range(6,10)]),
+                'colsample_bytree': list([i/10.0 for i in range(6,10)]),
+                'reg_alpha':[1e-5, 1e-2, 0.1, 1, 100]}
+</code></pre>
+<p>LightGBM</p>
+<pre><code class="language-python">param_grid = {'num_leaves': [7, 15, 31, 61, 81, 127],
+                    'max_depth': [3, 4, 5, 6, 7, 9, 11, -1],
+                   'learning_rate': [0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5],
+                   'n_estimators': [100, 200, 300, 400, 500],
+                   'boosting_type': ['gbdt', 'dart'],
+                   'class_weight': [None, 'balanced'],
+                   'min_child_samples': [10, 20, 40, 60, 80, 100, 200],
+                   'subsample': [0.5, 0.7, 0.8, 0.9, 1.0],
+                   'reg_alpha':[1e-5, 1e-2, 0.1, 1, 10, 100],
+                   'reg_lambda': [1e-5, 1e-2, 0.1, 1, 10, 100]}
+</code></pre>
+<h2 id="convolutional-neural-networks-cnns">Convolutional Neural Networks (CNNs)</h2>
+<p>It is well known that CNNs are highly noise-resistant models, and they can extract very informative features that capture local contexts. While CNNs have typically been used in image processing and computer vision, in this section, we will examine in detail how we can apply a 1-D CNN to time-series data.</p>
+<p>At the first layer, the convolution kernels (windows) always have the same depth as the number of features in time series, while their width can be varied. This way, the kernel moves in one direction from the beginning of a time series towards its end, performing convolution. In other words, we mapped each feature to a channel of the convolution layer.</p>
+<p>Each element of the kernel is multiplied by the corresponding element of the time-series input that it covers at a given point. The results of this multiplication are added together, and a nonlinear activation function (like ReLU) is applied to the value. The resulting value becomes an element of a new “filtered” time series, and the kernel moves forward along the time series to produce the next value. The depth of the new “filtered” time series is the same as the number of convolution kernels. Depending on the width of the kernel, different aspects, properties, and “features” of the initial time series get captured in each of the new filtered series.</p>
+<p>The baseline model is a Multi-Layered Perceptron (MLP), which processes only one record at a time. Point-wise convolutions compute higher-level features from interactions in the feature domain.</p>
+<p><img src="cnn1.png" alt="Pointwise convolutions"></p>
+<p>We include temporal information by processing all the records corresponding to a patient together and having wider kernel sizes. In these temporal models, wider kernels compute interaction features from the feature set at each time step.</p>
+<p><img src="cnn2.png" alt="Temporal convolutions"></p>
+<p>We report the results for the following models.</p>
+<ol>
+<li>Kernel size = 1 for all layers</li>
+<li>Kernel size = 3 for all layers</li>
+<li>Kernel size = 15 for all layers</li>
+<li>Variable kermel size: Kernel size = 3 for the first two layers and 15 for the last layer</li>
+</ol>
+<h2 id="recurrent-neural-networks-rnns">Recurrent Neural Networks (RNNs)</h2>
+<p>While CNNs can extract features based on neighboring records in time, they do not truly address the time-series nature of the data. Also, they are unable to extract long-range dependencies between inputs. Recurrent Neural Networks (RNNs) were designed to handle such time-series data and have found great success, especially in the field of natural language processing (NLP).</p>
+<p>The basic unit that makes a neural network “recurrent” is called a recurrent layer. There are several types of recurrent layers, but we can describe a general recurrent layer by a function that satisfies the relationship,
+$$v_t, c_t = RNN(x_t, v_{t-1}, c_{t-1})$$</p>
+<p>In simple terms, the output (also called the hidden state) $v$ and “cell state” $c$ at every time instant is a function of the current input, the previous output, and the previous cell state. We can illustrate this as</p>
+<p><img src="general_rnn.png" alt="General RNN block"></p>
+<p>$v_{t-1}$ and $c_{t-1}$ themselves can be written in terms of the previous outputs. So,
+$$v_t, c_t = RNN(x_t, f(x_{t-1}, v_{t-2}, c_{t-2})) = RNN(x_t, f(x_{t-1}, f(x_{t-2}, v_{t-3}, c_{t-3}))) \dots $$</p>
+<p>In RNN literature, this is called “unrolling” because we can represent this using the block diagram</p>
+<p><img src="general_rnn_unrolled.png" alt="Unrolled RNN block"></p>
+<p>which is an “unrolled” version of the previous figure. We can repeat this process endlessly, so is it turtles all the way down? Not really. In practice, we can assume that the input $x$ starts at t = 1, and initialize $v_0 = c_0 = 0$ for simplicity. This choice is arbitrary. You could use 0, 1, $\pi$, $e$, $e^\pi$, or anything else, depending on how creative you feel. Another common choice for the “initial state” $(v_0, c_0)$ is random noise, which adds a layer of stochasticity to the model.</p>
+<p>There is some 
+<a href="https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html" target="_blank" rel="noopener">interesting evidence</a> that shows that learning the initial state like a parameter can lead to an improvement in performance. This can be taken a step further by predicting the hidden state as a function of the input. Such models are called “Contextual” RNNs [8]</p>
+<p>Those with a background in Digital Signal Processing (DSP) might find the above expression for a general recurrent layer familiar. The time-domain description of an Infinite Impulse Response (IIR) filter
+$$y[t] = \sum_{k=0}^{p} b_k x[n-k] - \sum_{k=1}^{q} a_k y[n-k] $$
+resembles the description of a kind of “linear” recurrent layer, when $p = q = 1$. In time series analysis, this is called the Auto-Regressive Moving Average (ARMA) model, where the $\sum a_k y[n-k]$ is the AR part, and $\sum b_k x[n-k]$ is the MA part. In practice, however, recurrent layers are often non-linear in nature, to build more complex time-series models.</p>
+<p>While many recurrent layers exist, we used the Long Short Term Memory (LSTM) cell. The LSTM is one of the most popular choices of recurrent layers, due to its ability to capture long-range dependencies.</p>
+<p><img src="lstm_block.png" alt="LSTM Block">
+<em>Source: 
+<a href="https://www.researchgate.net/figure/Block-diagram-of-the-recurrent-module-of-an-LSTM-network_fig1_319235738" target="_blank" rel="noopener">ResearchGate</a></em></p>
+<p>A detailed explanation of LSTMs warrants a blog post of its own, of which 
+<a href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21" target="_blank" rel="noopener">this</a> is a fantastic example. The broad idea is that the line that runs through the LSTM offers a pathway for information from the past to be passed to the future easily. This gives the RNN cell a sort of “memory,” and the cell state is modified by the input at every time step. Finally, the output is a function of the cell state and the input. The pointwise multiplications are interpreted as “gates” that decide the amount of “attention” (in the range $[0, 1]$ or $[-1, 1]$) given to each feature.</p>
+<h2 id="reverse-time-attention-models-retain">Reverse Time Attention Models (RETAIN)</h2>
+<p>The Reverse Time Attention (RETAIN) model is an interpretable alternative to RNNs which was proposed in [9]. In this blog, we will look at a simplified version of the model, which worked better than the one proposed in the paper. We will also investigate the effect of the direction of time.</p>
+<p>Specifically, we will feed the input to both the traditional RNN and the RETAIN model in three ways - forward, which is the standard form of the input, backward, by reversing the order of records in the input, and bidirectional (we call this BiRETAIN), by feeding in both the forward and reverse directions. Nevertheless, we will call all these models “RETAIN” as they are based on the original RETAIN architecture.</p>
+<p>The RETAIN model can be illustrated by the figure</p>
+<p><img src="retain_arch.png" alt="RETAIN Model"></p>
+<p>As we had mentioned in the previous section, a core concept of RNNs is “gating”, which is achieved by “attention”. RETAIN provides an interpretable model by explicitly finding record-level (corresponding to each time step) and feature-level (corresponding to each feature at a time step) attention values, as a function of the “embedding” v, which is a linear function of the input features. As with all attention, these values are multiplied pointwise to the values of the embedding, and each gated embedding is mapped to the output, which is the rLOS in our case. Formally, we can write these as the following set of equations
+$$v_t = W_{emb}x_t + b_{emb}, \quad 1 \leq t \leq T$$</p>
+<p>That is, the embedding at each time step is a linear (technically, affine) function of the input features. This is equivalent to a single layer perceptron with no non-linear activation.</p>
+<p>$$z_{\alpha1} \dots z_{\alpha T} = RNN_\alpha(v_1 \dots v_T) $$
+$$z_{\beta1} \dots z_{\beta T} = RNN_\beta(v_1 \dots v_T)$$</p>
+<p>These two networks obtain feature vectors which are used to compute</p>
+<p>$$\alpha_t = \sigma(w_\alpha^Tz_{\alpha t} + b_\alpha)$$
+$$\beta_t = \tanh(W_\beta z_{\beta t} + b_\beta)$$</p>
+<p>The $\sigma$ and $\tanh$ are the sigmoid and tanh activations, which respectively map inputs to the range $[0,1]$ and $[-1, 1]$. These $\alpha_t$ and $\beta_t$ values are our attention values. We can now multiply these pointwise with the embeddings, to obtain the gated embeddings</p>
+<p>$$\tilde{v}_t = \alpha_t \beta_t \odot v_t$$</p>
+<p>where $\odot$ is called the “Hadamard product” which is just a fancy term for element-wise multiplication.</p>
+<p>Finally, the gated embedding is mapped to the output using the linear (again, technically, affine) mapping
+$$y_t = w^T \tilde{v_t} + b$$</p>
+<p>This final mapping is just linear regression, but now, the features $\tilde{v_t}$ are learned from data. We will show an even stronger relationship with linear regression when we discuss the interpretability of RETAIN.</p>
+<p>As mentioned earlier, a neat implementation trick that can be very useful is that we can apply an MLP (of which a linear function is a very special case) to a set of points using 1D convolutions. We can do this by mapping the features to the channels of the convolution and using a kernel size of 1. Using this trick, we can avoid looping over inputs to apply the MLP, which can be very inefficient.</p>
+<p>Now, we look at the most interesting part of RETAIN - how do we interpret the predictions? As hinted earlier, the interpretability of RETAIN comes from its relationship to linear regression. To understand this connection, let us take another look at the equations that describe RETAIN.</p>
+<p>Substituting the value of the gated embeddings,
+$$y_t = w^T (\alpha_t \beta_t \odot v_t) + b$$</p>
+<p>We can expand this further by writing the embeddings as a function of inputs, i.e.
+$$
+\begin{aligned}
+y_t &amp;= w^T (\alpha_t \beta_t \odot (W_{emb} x_t + b_{emb})) + b \\<br>
+&amp;= (\alpha_t (\beta_t \odot w)^T W_{emb}) x_t + (\alpha_t (\beta_t \odot w)^T b_{emb} + b)
+\end{aligned}
+$$
+Even though the math looks complicated, we have basically written $y_t$ as a function of the form
+$$y_t = \tilde{w_t}^T x_t + \tilde{b_t}$$</p>
+<p>This resembles the linear regression formulation, so we can interpret the coefficients $\tilde{w_t}$ as weights given to each feature. So, the RETAIN model is a method by which the weights of a linear regression model are predicted as a function of the input, and these weights represent the contribution of each feature.</p>
+<h2 id="federated-learning">Federated Learning</h2>
+<p>Standard machine learning approaches like the baseline model and the interpretable models require centralizing the training data on one machine or in a data center. Because our dataset is from the healthcare area, we need to consider the important problems of protecting patients’ privacy and the business secrets of hospitals. To address this, we use a Federated Learning [10] model for distributed learning, which does not require collecting all data in a center. So, the data providers do not need to share their data, making the training process more secure.</p>
+<p>In our federated learning model, we assume that our eICU data originated from different hospitals. To simulate this, we divided our original dataset into $k$ sub-datasets, representing $k$ hospitals. We called these hospitals clients in the rest of the blog. As the figure shows, all the clients train their models locally on their sub-datasets. In every epoch, all the clients can get their local model, and they only upload the models instead of data to the server. The server integrates all the local models into the global model and then sends it back to all clients. All the clients update their models to the updated global model and search for better weights. Because all the clients only share their models instead of original data, federated learning addresses privacy problems.</p>
+<p><img src="federated_learning.png" alt="Federated Learning">
+<em>Source: 
+<a href="https://developer.nvidia.com/blog/federated-learning-clara/" target="_blank" rel="noopener">NVIDIA</a></em></p>
+<p>However, it is important to note that the federated learning model has the following  disadvantages:</p>
+<ol>
+<li>Training local models with sub-datasets will decrease the accuracy of the global model because the global model does not use whole data to search for optimal weights of the network. Instead, the local models are merged in a weighted way, which influences the accuracy of the global model.</li>
+<li>If differences between local models trained on sub-datasets are large, the global model suffers from the worst local model.</li>
+<li>Communication between clients, where the local models reside, and the server, where the global model resides, takes a significant amount of time.</li>
+</ol>
+<p>Nevertheless, we are interested in using federated learning to introduce a privacy constraint to model building. In this experiment, we divided the original training set into five equal-sized parts. For comparison, we chose BiLSTM and BiRETAIN models as our baseline models. These two models have the lowest RMSE and highest $R^2$ among all the models in previous sections, making them good candidates for illustrating the effect of the federated learning model.</p>
+<h3 id="iid-data-group">IID data group</h3>
+<p>In this section, we randomly divide the training set into five parts. So, all the features in these sub-training sets have similar distributions, which helps reduce the variation in performance between local models.  With these five independent and identically distributed (IID) training sets, we have two ways of training the local models:</p>
+<ol>
+<li><strong>Full training</strong>: At every epoch, we train all the local models and update the weights of the global model with these five models.</li>
+<li><strong>Partial training</strong>: At every epoch, we randomly choose two of the five local models. Then, we only train these models and update the weights of the global model using these two.</li>
+</ol>
+<h3 id="non-iid-data-group">Non-IID data group</h3>
+<p>In this section, we divide the training set into five equal-sized parts according to three features - height, weight, and age. As a result, the features in these sub-training sets have different distributions. The criteria used to construct the sub-training sets are shown below.</p>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Features/Group</th>
+<th>Group A</th>
+<th>Group B</th>
+<th>Group C</th>
+<th>Group D</th>
+<th>Group E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Height (cm)</td>
+<td>100 - 160</td>
+<td>161 - 167</td>
+<td>168 - 173</td>
+<td>174 - 180</td>
+<td>181 - 218</td>
+</tr>
+<tr>
+<td>Weight (kg)</td>
+<td>30 - 65</td>
+<td>66 - 75</td>
+<td>76 - 86</td>
+<td>87 - 102</td>
+<td>103 - 272</td>
+</tr>
+<tr>
+<td>Age (years)</td>
+<td>18 - 53</td>
+<td>54 - 64</td>
+<td>65 - 71</td>
+<td>72 - 78</td>
+<td>79 - 89</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For convenience, we only use the partial training strategy on non-IID data.</p>
+<h1 id="results">Results</h1>
+<h2 id="decision-trees">Decision Trees</h2>
+<p>Below are the optimized parameter values for the best decision tree.</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DT Maximum depth</td>
+<td>10</td>
+</tr>
+<tr>
+<td>DT Max leaf nodes</td>
+<td>200</td>
+</tr>
+<tr>
+<td>DT Max sample leaf</td>
+<td>100</td>
+</tr>
+<tr>
+<td>DT Min samples split</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p>We found that the optimized decision tree that used the last record of each patient performed the best with an $R^2$ value of 0.96 as shown in the table below.</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Target</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BMDT1</td>
+<td>rLOS</td>
+<td>1.696</td>
+<td>6.944</td>
+<td>-0.834</td>
+</tr>
+<tr>
+<td>BMDT1 – Optimized</td>
+<td>rLOS</td>
+<td>1.237</td>
+<td>3.46</td>
+<td>0.084</td>
+</tr>
+<tr>
+<td>BMDT2 – Optimized (first record)</td>
+<td>LOS</td>
+<td>1.268</td>
+<td>3.779</td>
+<td>0.092</td>
+</tr>
+<tr>
+<td><strong>BMDT2 – Optimized (last record)</strong></td>
+<td><strong>LOS</strong></td>
+<td><strong>0.072</strong></td>
+<td><strong>0.150</strong></td>
+<td><strong>0.964</strong></td>
+</tr>
+<tr>
+<td>BMDT3 – Optimized (first record and # of offsets)</td>
+<td>LOS</td>
+<td>0.552</td>
+<td>1.603</td>
+<td>0.615</td>
+</tr>
+<tr>
+<td>BMDT3 – Optimized  (last record and # of offsets)</td>
+<td>LOS</td>
+<td>0.584</td>
+<td>1.671</td>
+<td>0.599</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<h2 id="overall-baseline-model-performance">Overall Baseline model Performance</h2>
+<p>Using the first record plus the number of offsets for each patient to predict LOS, the performance is as follows.</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+<th>Time (sec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decision Tree</td>
+<td>0.552</td>
+<td>1.603</td>
+<td>0.615</td>
+<td>0.222</td>
+</tr>
+<tr>
+<td>Ridge</td>
+<td>0.623</td>
+<td>1.735</td>
+<td>0.583</td>
+<td>0.008</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>0.623</td>
+<td>1.735</td>
+<td>0.583</td>
+<td>0.016</td>
+</tr>
+<tr>
+<td>LinearSVR</td>
+<td><strong>0.492</strong></td>
+<td>1.942</td>
+<td>0.533</td>
+<td>1.483</td>
+</tr>
+<tr>
+<td>RF</td>
+<td>0.559</td>
+<td>1.598</td>
+<td>0.616</td>
+<td>50.591</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.537</td>
+<td>1.521</td>
+<td>0.634</td>
+<td>5.914</td>
+</tr>
+<tr>
+<td><strong>LightGBM</strong></td>
+<td>0.533</td>
+<td><strong>1.500</strong></td>
+<td><strong>0.639</strong></td>
+<td>9.239</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p>From this table, we can see that using the first record plus the number of offsets for each patient, we can get reasonable performance. The best model in terms of MAE is the LinearSVR, while in terms of MSE and $R^2$, LightGBM ranks first. We also observed that linear models trained very fast, while tree-based models were generally slow.</p>
+<p>Using the last record for each patient to predict LOS, we obtain the performance</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+<th>Time (sec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decision Tree</td>
+<td>0.072</td>
+<td>0.150</td>
+<td>0.964</td>
+<td>0.204</td>
+</tr>
+<tr>
+<td><strong>Ridge</strong></td>
+<td>0.057</td>
+<td><strong>0.010</strong></td>
+<td><strong>0.997</strong></td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>0.057</td>
+<td>0.011</td>
+<td>0.997</td>
+<td>0.013</td>
+</tr>
+<tr>
+<td><strong>LinearSVR</strong></td>
+<td><strong>0.052</strong></td>
+<td>0.011</td>
+<td><strong>0.997</strong></td>
+<td>7.017</td>
+</tr>
+<tr>
+<td>RF</td>
+<td>0.058</td>
+<td>0.024</td>
+<td>0.994</td>
+<td>62.924</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.059</td>
+<td>0.016</td>
+<td>0.996</td>
+<td>3.634</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>0.074</td>
+<td>0.073</td>
+<td>0.982</td>
+<td>0.581</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+From this table, we see that using the last record with the time offset, all the models achieved nearly perfect predictions. Specifically, the Ridge and Linear SVR models performed the best in terms of MAE and MSE, respectively, and both models achieved the highest $R^2$.
+<h2 id="convolutional-neural-networks">Convolutional Neural Networks</h2>
+<p>The results of our experiments with baseline MLP and CNNs having various kernel sizes are shown below.</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>R2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline MLP</td>
+<td>1.35</td>
+<td>2.14</td>
+<td>-0.02</td>
+</tr>
+<tr>
+<td>Kernel size = 1</td>
+<td>1.19</td>
+<td>1.97</td>
+<td>-0.03</td>
+</tr>
+<tr>
+<td>Kernel size = 3</td>
+<td>1.08</td>
+<td>1.873</td>
+<td>0.073</td>
+</tr>
+<tr>
+<td>Kernel size = 15</td>
+<td>1.41</td>
+<td>1.99</td>
+<td>-0.05</td>
+</tr>
+<tr>
+<td><strong>Variable kernel size</strong></td>
+<td><strong>0.97</strong></td>
+<td><strong>1.74</strong></td>
+<td><strong>0.19</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p>From these results, we can make the following observations. The most complex model, which has a kernel of size 15 performs the worst. So there is some gap between our intuition and how the CNNs behave with this kind of dataset.</p>
+<p>Also, while CNNs are computationally less intensive as compared to RNNs, they perform poorly because the features extracted from the time-series data are shallow, in the sense that only closely localized relationships between a few neighbors are factored into the feature representations.</p>
+<h2 id="recurrent-neural-networks-and-retain">Recurrent Neural Networks and RETAIN</h2>
+<p>The performance of various RNN and the corresponding RETAIN models have been listed in the table below.</p>
+<center>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>R2 Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LSTM</td>
+<td>1.166</td>
+<td>1.927</td>
+<td>0.019</td>
+</tr>
+<tr>
+<td>LSTM (Reversed)</td>
+<td>0.149</td>
+<td>0.325</td>
+<td>0.972</td>
+</tr>
+<tr>
+<td>BiLSTM</td>
+<td>0.108</td>
+<td>0.316</td>
+<td>0.973</td>
+</tr>
+<tr>
+<td>RETAIN</td>
+<td>1.169</td>
+<td>1.927</td>
+<td>0.019</td>
+</tr>
+<tr>
+<td>RETAIN (Reversed)</td>
+<td>0.157</td>
+<td>0.383</td>
+<td>0.961</td>
+</tr>
+<tr>
+<td><strong>BiRETAIN</strong></td>
+<td><strong>0.085</strong></td>
+<td><strong>0.255</strong></td>
+<td><strong>0.983</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p>From this table, we see that the two bidirectional models outperform all other models, and the BiRETAIN model, in particular, performs the best. This makes sense because the bidirectional models can capture dependencies in both forward and reversed time. More importantly, all RETAIN models achieve a similar performance as their corresponding RNN counterparts. This shows that we can offer interpretability without incurring any cost in performance.
+As explained above, we interpret the RETAIN model by examining the coefficients of the effective linear regression model. We visualize the change in the coefficients over time for an example from the test set below.</p>
+<p><img src="biretain_interpretation.png" alt="Interpreting the RETAIN model"></p>
+<p>From the figure, we see that the weights of the offset and the admission diagnosis change rapidly, while the other weights remain approximately constant. This makes sense because the admission diagnosis may become less important as time progresses, and the change in rLOS over time is fuelled by the offset.</p>
+<h2 id="federated-learning-1">Federated Learning</h2>
+<p>Through the results of our experiments on IID and non-IID data, we will show that in most cases, the federated learning model can guarantee the confidentiality of patient data, while incurring a small sacrifice in performance.</p>
+<h3 id="performance-on-iid-data">Performance on IID Data</h3>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>Baseline</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>3.24</td>
+<td>0.108</td>
+<td>0.316</td>
+<td>0.973</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>7.48</td>
+<td>0.085</td>
+<td>0.255</td>
+<td>0.983</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>IID - Full Training</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>4.27</td>
+<td>0.2442</td>
+<td>0.3947</td>
+<td>0.9605</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>8.55</td>
+<td>0.1791</td>
+<td>0.3757</td>
+<td>0.9654</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>IID - Partial Training</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>1.45</td>
+<td>0.2970</td>
+<td>0.3516</td>
+<td>0.9437</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>3.40</td>
+<td>0.2644</td>
+<td>0.3903</td>
+<td>0.9307</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>From the tables above, we can see the federated learning model with IID sub-datasets doesn’t affect the performance of the baseline models much.</p>
+<p>Under the full-training regime, the training time for BiLSTM and BiRETAIN federated models is considerably more (about 30% for BiLSTM and 15% BiRETAIN) than the corresponding baseline models because of the communication cost mentioned before. The performance of the federated BiLSTM model decreases slightly, and $R^2$ doesn’t change much. In contrast, the federated BiRETAIN model is affected significantly, with $R^2$ decreasing from 0.9819 to 0.9654.</p>
+<p>Under the partial-training regime, we see that the training time decreases dramatically because only 40% of the data is used at each epoch. In this regime, the MAEs for both models increase dramatically while the $R^2$ decreases. These two partially-trained models are affected by the federated framework, but the performances are still acceptable.</p>
+<h3 id="performance-on-non-iid-data">Performance on non IID Data</h3>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>Grouping by Height</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>1.56</td>
+<td>0.2579</td>
+<td>0.3529</td>
+<td>0.9474</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>3.44</td>
+<td>0.3114</td>
+<td>0.4017</td>
+<td>0.9149</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>Grouping by Weight</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>1.58</td>
+<td>0.2921</td>
+<td>0.3868</td>
+<td>0.9327</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>3.52</td>
+<td>0.3120</td>
+<td>0.4976</td>
+<td>0.8774</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<div class="table-caption">
+<l><b>Grouping by Age</b></l>
+</div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Time (min.sec)</th>
+<th>MAE</th>
+<th>MSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BiLSTM</td>
+<td>1.45</td>
+<td>0.3275</td>
+<td>0.3824</td>
+<td>0.9319</td>
+</tr>
+<tr>
+<td>BiRETAIN</td>
+<td>3.31</td>
+<td>0.2873</td>
+<td>0.4071</td>
+<td>0.9269</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>From the tables above, we see that all the models in the non-IID setting perform worse than the corresponding partially-trained model on IID datasets. Models in height and age groups show a small decline in $R^2$, while the models in the weight group show a steeper decline. This is especially the case for the BiRETAIN model, with $R^2$ decreasing from 0.9307 to 0.8774.</p>
+<h2 id="comprehensive-results">Comprehensive Results</h2>
+<p>In the table below, we compare the best performing models of each type. We omit the federated learning models, because they will naturally achieve a lower performance, while the real benefit is being able to protect patient privacy.</p>
+<style>
+.basic-styling td,
+.basic-styling th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+</style>
+<div class="ox-hugo-table basic-styling">
+<div></div>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Target</th>
+<th>MAE</th>
+<th>RMSE</th>
+<th>$R^2$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BMDT2 (last record)</td>
+<td>LOS</td>
+<td>0.072</td>
+<td>0.388</td>
+<td>0.964</td>
+</tr>
+<tr>
+<td><strong>Ridge (last record)</strong></td>
+<td>LOS</td>
+<td>0.057</td>
+<td><strong>0.100</strong></td>
+<td><strong>0.997</strong></td>
+</tr>
+<tr>
+<td><strong>Linear SVR (last record)</strong></td>
+<td>LOS</td>
+<td><strong>0.052</strong></td>
+<td>0.105</td>
+<td><strong>0.997</strong></td>
+</tr>
+<tr>
+<td>Variable size CNN</td>
+<td>rLOS</td>
+<td>0.97</td>
+<td>1.74</td>
+<td>0.19</td>
+</tr>
+<tr>
+<td><strong>BiRETAIN</strong></td>
+<td>rLOS</td>
+<td><strong>0.085</strong></td>
+<td><strong>0.255</strong></td>
+<td><strong>0.983</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Because the targets predicted by the baselines models are different from those predicted by the advanced models, knowing the LOS is equivalent to know the rLOS, because the current offset is always known. So, even though we cannot directly compare the values, it is clear that simple regression models are able to match, if not exceed, the performance of sophisticated neural networks by having access to the last data. This means that almost all of the predictive power of a patient&rsquo;s records is in the last record.</p>
+<h1 id="limitations">Limitations</h1>
+<p>The eICU database is large and comprises of routinely collected clinical data in an eICU setting. However, the database also contains non-ICU stays (e.g., step down units SDUs). This means that some patients (patient unit stay ids) in our dataset could be from SDUs, rather than an actual ICU unit stay. Nevertheless, we do not expect this to affect our results because all our models use the same data, and we only analyze tradeoffs.</p>
+<p>An important observation about our results is that models that did not have access to all records (and so, the last record), performed very poorly. Having access to all records is a profoundly impractical assumption, because simply knowing that we have all the records means knowing that the patient&rsquo;s stay has ended, which renders predicting the LOS useless.</p>
+<p>So, even though we have shown that using interpretable and confidential models does not affect performance too much, the base problem of predicting rLOS in a causal way, meaning that we do not have access to future records, remains a very hard problem.</p>
+<p>Moreover, while our experiments with federated learning showed good results, there is still room for improvement in the following areas:</p>
+<ol>
+<li>Our main goal is regression, which is simpler than classification and other advanced tasks. So, separation of original data doesn&rsquo;t affect the results much, and we may not have stretched our federated learning models to see its side effects.</li>
+<li>Even though our non-IID groups had different height, weight, and age distributions, all the sub-datasets were of the same size. Therefore, we did not get the results under the extreme situation that one of the sub-training set is significantly larger than another. In such a situation, we expect the performance of the federated models to decrease dramatically.</li>
+<li>All clients have the same form of data, which only differ in their values. This homogeneity might be inflating the results of our non-IID models.</li>
+</ol>
+<h1 id="references">References</h1>
+<p>[1] Rapoport J, Teres D, Zhao Y, Lemeshow S: Length of stay data as a guide to hospital economic performance for ICU patients. Med Care. 2003, 41: 386-397. 10.1097/00005650-200303000-00007.</p>
+<p>[2] Pollard, T. J., Johnson, A. E., Raffa, J. D., Celi, L. A., Mark, R. G., &amp; Badawi, O. (2018). The eICU Collaborative Research Database, a freely available multi-center database for critical care research. Scientific data, 5, 180178.</p>
+<p>[3] Sheikhalishahi, S., Balaraman, V., &amp; Osmani, V. (2020). Benchmarking machine learning models on multi-centre eICU critical care dataset. Plos one, 15(7), e0235424.</p>
+<p>[4] Rajabalizadeh A, Nia N, Safaei N, Talafidaryani M, Bijari R, Zarindast A, Fotouhi F, Salehi M, Moqri M (2020). Exploratory Analysis of Electronic Intensive Care Unit (eICU) Database.  medRxiv 2020.03.29.20042028; doi: <a href="https://doi.org/10.1101/2020.03.29.20042028">https://doi.org/10.1101/2020.03.29.20042028</a></p>
+<p>[5] Harutyunyan, H., Khachatrian, H., Kale, D. C., Ver Steeg, G., &amp; Galstyan, A. (2019). Multitask learning and benchmarking with clinical time series data. Scientific data, 6(1), 1-18.</p>
+<p>[6] Johnson, A. E., Pollard, T. J., Shen, L., Li-Wei, H. L., Feng, M., Ghassemi, M., Moody, B., Szolovits, P., Celi, L. A., Mark, R. G. (2016). MIMIC-III, a freely accessible critical care database. Scientific data, 3(1), 1-9.</p>
+<p>[7] Komorowski, M., Celi, L.A., Badawi, O. et al. The Artificial Intelligence Clinician learns optimal treatment strategies for sepsis in intensive care. Nat Med 24, 1716–1720 (2018). <a href="https://doi.org/10.1038/s41591-018-0213-5">https://doi.org/10.1038/s41591-018-0213-5</a></p>
+<p>[8] Wenke, S., Fleming, J.: Contextual Recurrent Neural Networks. CoRR abs/1902.0
+(2019), <a href="http://arxiv.org/abs/1902.03455">http://arxiv.org/abs/1902.03455</a></p>
+<p>[9] Choi, E., Bahadori, M. T., Sun, J., Kulas, J., Schuetz, A., &amp; Stewart, W. (2016). Retain: An interpretable predictive model for healthcare using reverse time attention mechanism. In Advances in Neural Information Processing Systems (pp. 3504-3512).</p>
+<p>[10] Yang, Q., Liu, Y., Chen, T., &amp; Tong, Y. (2019). Federated machine learning: Concept and applications. ACM Transactions on Intelligent Systems and Technology (TIST), 10(2), 1-19.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/academic/">Academic</a>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/abhinau-kumar/avatar_hubfd6efb21f47dc208a73a775afed9660_123996_270x270_fill_q90_lanczos_center.jpg" alt="Abhinau Kumar">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="https://abhinaukumar.github.io/">Abhinau Kumar</a></h5>
+        <h6 class="card-subtitle">Graduate Student and Research Assistant</h6>
+        <p class="card-text">My work is focused on estimating and optimizing the subjective quality of images and videos.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:abhinaukumar@utexas.edu" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/nownowk" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=sI4C0T0AAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/abhinaukumar" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://linkedin.com/in/abhinau-kumar" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/files/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/reduced-reference/">Information Theoretic Reduced Reference Quality Models</a></li>
+      
+      <li><a href="/post/texture-feature/">Texture Features</a></li>
+      
+      <li><a href="/post/nss-and-vif/">Natural Scene Statistics and Visual Information Fidelity</a></li>
+      
+      <li><a href="/post/the-tourist/">The Tourist</a></li>
+      
+      <li><a href="/post/the-old-mans-tale/">The Old Man&#39;s Tale</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/cpp.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/bash.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
