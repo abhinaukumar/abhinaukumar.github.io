@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc.">
+  <meta name="description" content="Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://abhinaukumar.github.io/post/eicu-tradeoffs/">
@@ -254,8 +254,8 @@
   <meta property="og:site_name" content="Abhinau Kumar">
   <meta property="og:url" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/">
   <meta property="og:title" content="Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients | Abhinau Kumar">
-  <meta property="og:description" content="Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."><meta property="og:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg">
-  <meta property="twitter:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."><meta property="og:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.png">
+  <meta property="twitter:image" content="https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2020-12-10T00:00:00&#43;00:00">
@@ -289,7 +289,7 @@
   "headline": "Analyzing Model Tradeoffs in Predicting Length of Stay (LOS) in eICU Patients",
   
   "image": [
-    "https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.jpg"
+    "https://abhinaukumar.github.io/post/eicu-tradeoffs/featured.png"
   ],
   
   "datePublished": "2020-12-10T00:00:00Z",
@@ -308,7 +308,7 @@
       "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Introduction and Background Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."
+  "description": "Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc."
 }
 </script>
 
@@ -749,10 +749,10 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 540px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 432px;">
   <div style="position: relative">
-    <img src="/post/eicu-tradeoffs/featured_hu8172e0ed054a0c8052ac3d514cfdbade_150015_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
-    <span class="article-header-caption">Source: <a href="https://twistedsifter.com/2015/04/the-banyan-tree/"><strong>TwistedSifter</strong></a></span>
+    <img src="/post/eicu-tradeoffs/featured_hu98c57c97eeab0a82f6f48c16e04f520f_361766_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    <span class="article-header-caption">Source: <a href="https://www.managedhealthcareexecutive.com/view/six-healthcare-technologies-coming-next-10-years"><strong>Managed Healthcare Executive</strong></a></span>
   </div>
 </div>
 
@@ -761,15 +761,14 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h1 id="introduction-and-background">Introduction and Background</h1>
-<p>Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc., for continuous monitoring.  Data mining and predicting/projecting the remaining length of stay (rLOS) for a patient will help allocate resources efficiently and provide timely services to patients.</p>
+      <p>Patients with prolonged stay often account for high resource consumption [1], and so, are a potential loss of revenue from a hospital management perspective. This is especially important in the case of Intensive Care Unit (ICU) and electronic ICU (eICU) patients due to their intensive need for care resources like nurses, drugs, surgeons, X-ray machines, etc., for continuous monitoring.  Data mining and predicting/projecting the remaining length of stay (rLOS) for a patient will help allocate resources efficiently and provide timely services to patients.</p>
 <p>The challenge for developing such a predictive model arises from the incomplete understanding of the complex clinical factors that may be involved and their interactions or relationships that lead to a specific LOS. This is a potential application for neural networks, which are considered universal function approximators. Since we are handling time-series data in the form of patient records, we mainly use CNNs and RNNs (and related architectures) to predict rLOS.</p>
 <p>In addition to having a predictive model, an accurate understanding of the factors that are closely associated with LOS can allow for efficient hospital resource management, savings to a healthcare system, and better patient care by reducing readmissions. In this regard, neural networks fall short, as they are not interpretable. This “black box” behavior of neural networks leads us to the first tradeoff that we consider in this blog – performance vs. interpretability.</p>
 <p>Also, the dataset is sensitive for the patients and must be protected. All countries have laws to protect privacy, leading to difficulties in the data collection phase. Many hospitals may refuse to share healthcare data without any Health Insurance Portability and Accountability Act (HIPAA) agreements or data governance in place. Therefore, we also investigated a Federated Learning framework to address such privacy issues.  This distributed learning framework leads us to the second tradeoff – performance vs. privacy security.</p>
-<h1 id="database">Database</h1>
+<h1 id="the-eicu-database">The eICU Database</h1>
 <p>The eICU Collaborative Research Database [2] is a multi-center intensive care unit database with high granularity data for over 200,000 admissions to ICUs monitored by eICU programs across the United States. The eICU database comprises 200,859 patient unit encounters for 139,367 unique patients admitted between 2014 and 2015 to 208 hospitals located throughout the US.</p>
 <p>The database is de-identified and includes vital sign measurements, care plan documentation, severity of illness measures, diagnosis information, treatment information, and more. The data is publicly available after registration, including completion of a training course on research with human subjects and signing of a data use agreement mandating responsible handling of the data and adhering to the principle of collaborative research.</p>
-<h1 id="data-preprocessing">Data preprocessing</h1>
+<h1 id="preprocessing-the-data">Preprocessing the Data</h1>
 <p>To clean and preprocess the data, we use the same procedure used in [3]. To clean the data, we use several exclusion criteria.</p>
 <ol>
 <li>
@@ -924,7 +923,7 @@ deterioration of the patient over the next 24 hours</li>
 <p>Rajabalizadeh et al. [4] conducted an exploratory analysis of the eICU dataset, quantifying the distribution of frequencies of visits, co-presence of diagnoses, racial bias, etc. They also show that the Acute Physiology Age Chronic Health Evaluation (APACHE) III system does not predict LOS well.</p>
 <p>Sheikhalishahi et al. [3] proposed a Bidirectional Long Short Term Memory (BiLSTM) model to perform the same four tasks. An important difference between the two models, aside from being trained on different databases, is that Sheikhalishahi et al. use a single-task BiLSTM, while Rajabalizadeh et al. use a multi-task RNN model.</p>
 <p>Other than unsupervised and supervised methods, reinforcement learning (RL) models have also been developed using the eICU database. Komorowski et al. Komorowsksi et al. [7] trained an RL agent to learn an optimal “clinician policy,” to reduce the mortality risk of patients. The agent was trained and validated using the MIMIC-III database, while the eICU database was used for model testing.</p>
-<h1 id="models">Models</h1>
+<h1 id="the-models-we-tested">The Models We Tested</h1>
 <p>We can broadly divide the different trained models into three broad categories, baseline, advanced, and federated models. The baseline models consist of standard regression models like decision trees, linear regression, and support vector regressors, and ensemble models built on these base regressors.</p>
 <p>Among the advanced models, we have Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and an interpretable RNN called the Reverse Time Attention (RETAIN) model.</p>
 <p>We use the RETAIN and Federated Learning models to understand the tradeoffs in performance when enforcing interpretability and privacy, respectively.</p>
@@ -1531,7 +1530,6 @@ As explained above, we interpret the RETAIN model by examining the coefficients 
 <p><img src="biretain_interpretation.png" alt="Interpreting the RETAIN model"></p>
 <p>From the figure, we see that the weights of the offset and the admission diagnosis change rapidly, while the other weights remain approximately constant. This makes sense because the admission diagnosis may become less important as time progresses, and the change in rLOS over time is fuelled by the offset.</p>
 <h2 id="federated-learning-1">Federated Learning</h2>
-<p>Through the results of our experiments on IID and non-IID data, we will show that in most cases, the federated learning model can guarantee the confidentiality of patient data, while incurring a small sacrifice in performance.</p>
 <h3 id="performance-on-iid-data">Performance on IID Data</h3>
 <style>
 .basic-styling td,
@@ -1839,7 +1837,15 @@ As explained above, we interpret the RETAIN model by examining the coefficients 
 </table>
 </div>
 <p>Because the targets predicted by the baselines models are different from those predicted by the advanced models, knowing the LOS is equivalent to know the rLOS, because the current offset is always known. So, even though we cannot directly compare the values, it is clear that simple regression models are able to match, if not exceed, the performance of sophisticated neural networks by having access to the last data. This means that almost all of the predictive power of a patient&rsquo;s records is in the last record.</p>
-<h1 id="limitations">Limitations</h1>
+<h1 id="what-have-we-learnt">What Have We Learnt?</h1>
+<p>Based on our experiments, we have the following key takeways.</p>
+<ol>
+<li>Simple regressors that have access to the last record achieve almost perfect predictions.</li>
+<li>CNNs are unable to capture long-term dependencies, so they perform poorly in spite of having access to all records.</li>
+<li>The RETAIN model is able to match, and even out perform, traditional RNN models, with the added benefit of interpretability.</li>
+<li>In most cases, the federated learning model can guarantee the confidentiality of patient data, while incurring a small sacrifice in performance.</li>
+</ol>
+<h1 id="some-caveats">Some Caveats</h1>
 <p>The eICU database is large and comprises of routinely collected clinical data in an eICU setting. However, the database also contains non-ICU stays (e.g., step down units SDUs). This means that some patients (patient unit stay ids) in our dataset could be from SDUs, rather than an actual ICU unit stay. Nevertheless, we do not expect this to affect our results because all our models use the same data, and we only analyze tradeoffs.</p>
 <p>An important observation about our results is that models that did not have access to all records (and so, the last record), performed very poorly. Having access to all records is a profoundly impractical assumption, because simply knowing that we have all the records means knowing that the patient&rsquo;s stay has ended, which renders predicting the LOS useless.</p>
 <p>So, even though we have shown that using interpretable and confidential models does not affect performance too much, the base problem of predicting rLOS in a causal way, meaning that we do not have access to future records, remains a very hard problem.</p>
@@ -1857,8 +1863,8 @@ As explained above, we interpret the RETAIN model by examining the coefficients 
 <p>[5] Harutyunyan, H., Khachatrian, H., Kale, D. C., Ver Steeg, G., &amp; Galstyan, A. (2019). Multitask learning and benchmarking with clinical time series data. Scientific data, 6(1), 1-18.</p>
 <p>[6] Johnson, A. E., Pollard, T. J., Shen, L., Li-Wei, H. L., Feng, M., Ghassemi, M., Moody, B., Szolovits, P., Celi, L. A., Mark, R. G. (2016). MIMIC-III, a freely accessible critical care database. Scientific data, 3(1), 1-9.</p>
 <p>[7] Komorowski, M., Celi, L.A., Badawi, O. et al. The Artificial Intelligence Clinician learns optimal treatment strategies for sepsis in intensive care. Nat Med 24, 1716–1720 (2018). <a href="https://doi.org/10.1038/s41591-018-0213-5">https://doi.org/10.1038/s41591-018-0213-5</a></p>
-<p>[8] Wenke, S., Fleming, J.: Contextual Recurrent Neural Networks. CoRR abs/1902.0
-(2019), <a href="http://arxiv.org/abs/1902.03455">http://arxiv.org/abs/1902.03455</a></p>
+<p>[8] Wenke, S., &amp; Fleming, J. (2019). Contextual Recurrent Neural Networks. arXiv preprint arXiv:1902.03455.</p>
+<p>Smirnova, E., &amp; Vasile, F. (2017, August). Contextual sequence modeling for recommendation with recurrent neural networks. In Proceedings of the 2nd Workshop on Deep Learning for Recommender Systems (pp. 2-9).</p>
 <p>[9] Choi, E., Bahadori, M. T., Sun, J., Kulas, J., Schuetz, A., &amp; Stewart, W. (2016). Retain: An interpretable predictive model for healthcare using reverse time attention mechanism. In Advances in Neural Information Processing Systems (pp. 3504-3512).</p>
 <p>[10] Yang, Q., Liu, Y., Chen, T., &amp; Tong, Y. (2019). Federated machine learning: Concept and applications. ACM Transactions on Intelligent Systems and Technology (TIST), 10(2), 1-19.</p>
 
