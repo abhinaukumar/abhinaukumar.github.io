@@ -1847,7 +1847,7 @@ As explained above, we interpret the RETAIN model by examining the coefficients 
 <li>In most cases, the federated learning model can guarantee the confidentiality of patient data, while incurring a small sacrifice in performance.</li>
 </ol>
 <p>The code for all our experiments can be found at 
-<a href="https://github.com/parvenkumar/datamining" target="_blank" rel="noopener">this GitHub repository</a>.</p>
+<a href="https://github.com/parvenkumari/datamining" target="_blank" rel="noopener">this GitHub repository</a>.</p>
 <h1 id="some-caveats">Some Caveats</h1>
 <p>The eICU database is large and comprises of routinely collected clinical data in an eICU setting. However, the database also contains non-ICU stays (e.g., step down units SDUs). This means that some patients (patient unit stay ids) in our dataset could be from SDUs, rather than an actual ICU unit stay. Nevertheless, we do not expect this to affect our results because all our models use the same data, and we only analyze tradeoffs.</p>
 <p>An important observation about our results is that models that did not have access to all records (and so, the last record), performed very poorly. Having access to all records is a profoundly impractical assumption, because simply knowing that we have all the records means knowing that the patient&rsquo;s stay has ended, which renders predicting the LOS useless.</p>
