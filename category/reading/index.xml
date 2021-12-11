@@ -7,7 +7,7 @@
     <description>Reading</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 16 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Reading</title>
       <link>https://abhinaukumar.github.io/category/reading/</link>
     </image>
@@ -34,7 +34,7 @@ $$ C_{mkfr} = S_{mkfr} U_{mkfr}, \ C_{mkfd} = S_{mkfd} U_{mkfd}$$&lt;/p&gt;
 &lt;p&gt;Similarly, to measure the temporal quality, we consider the wavelet coefficients of the differences between successive frames and model them also as GSM RVs.
 $$ D_{mkfr} = T_{mkfr} V_{mkfr}, \ D_{mkfd} = T_{mkfd} V_{mkfd}$$&lt;/p&gt;
 &lt;p&gt;These are passed through an Additive White Gaussian Noise Channel (AWGN) which models neural noise in the Human Visual System (HVS) to get
-$$C_{mkfr}&amp;rsquo; = C_{mkfr} + W_{mkfr}, \ C_{mkfd}&amp;rsquo; = C_{mkfd} + W_{mkfd}$$ $$D_{mkfr}&amp;rsquo; = D_{mkfr} + Z_{mkfr}, \ D_{mkfd}&amp;rsquo; = D_{mkfd} + Z_{mkfd}$$&lt;/p&gt;
+$$C_{mkfr}&#39; = C_{mkfr} + W_{mkfr}, \ C_{mkfd}&#39; = C_{mkfd} + W_{mkfd}$$ $$D_{mkfr}&#39; = D_{mkfr} + Z_{mkfr}, \ D_{mkfd}&#39; = D_{mkfd} + Z_{mkfd}$$&lt;/p&gt;
 &lt;p&gt;where the noise RVs $W_{mkfr}$ and $W_{mkfd}$ are distributed as $\mathcal{N}(0, \sigma_w^2 I)$, and $Z_{mkfr}$ and $Z_{mkfd}$ are distributed as $\mathcal{N}(0, \sigma_z^2 I)$.&lt;/p&gt;
 &lt;p&gt;As in VIF, we estimate the covariance of the &amp;ldquo;underlying&amp;rdquo; Gaussian in each case, denoting them by $K_{U_{kfr}}$, $K_{V_{kfd}}$, $ K_{V_{kfr}}$, and the value of the scalar multipliers at each point (also called the variance field), denoting them by $s_{mkfr}$, $s_{mkfd}$, $t_{mkfr}$, and $t_{mkfd}$.&lt;/p&gt;
 &lt;p&gt;Using these quantities, we can compute the conditional differential entropy of the $d = M^2$ dimensional GSM vectors $C$ and $D$ given $s$ and $t$ respectively as
@@ -177,7 +177,7 @@ graph LR;
 &lt;p&gt;$$ D = g \cdot C + V $$&lt;/p&gt;
 &lt;p&gt;Finally, we model the neural noise of the HVS as an AWGN channel having $N, N&amp;rsquo; \sim \mathcal{N}(0, \sigma_n^2)$. The final received pristine and distorted images are given by&lt;/p&gt;
 &lt;p&gt;$$ E = C + N = S \cdot U + N$$
-$$ F = D + N&amp;rsquo; = g \cdot S \cdot U + V + N&amp;rsquo; $$&lt;/p&gt;
+$$ F = D + N&#39; = g \cdot S \cdot U + V + N&#39; $$&lt;/p&gt;
 &lt;p&gt;We condition all quantities on knowing $S$ because knowing $S$ allows us to predict VIF for our particular pair of reference and test images, instead of a general average case. The intuition here is that upon distortion, lesser information about the source is retained in the distorted image. So, the VIF index is defined as
 $$ VIF = \frac{I(C; E | S = s)}{I(C; F | S = s)} $$&lt;/p&gt;
 &lt;p&gt;Conveniently, conditioning on $S$ results in all RVs becoming Gaussians, whose entropies are easy to compute. For an image having $N$ samples of dimension $d$, if the covariance matrix has eigenvalues $

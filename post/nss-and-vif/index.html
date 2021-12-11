@@ -56,7 +56,7 @@
   
     
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -68,8 +68,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -231,8 +231,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://abhinaukumar.github.io/post/nss-and-vif/">
 
@@ -305,7 +305,7 @@
     "name": "Abhinau Kumar",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture."
@@ -359,7 +359,9 @@
   <title>Natural Scene Statistics and Visual Information Fidelity | Abhinau Kumar</title>
 
 </head>
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
 
   <aside class="search-results" id="search">
   <div class="container">
@@ -394,6 +396,9 @@
 
 
   
+
+
+
 
 
 
@@ -652,6 +657,7 @@
 </nav>
 
 
+
   <article class="article">
 
   
@@ -797,7 +803,7 @@ graph LR;
 <p>$$ D = g \cdot C + V $$</p>
 <p>Finally, we model the neural noise of the HVS as an AWGN channel having $N, N&rsquo; \sim \mathcal{N}(0, \sigma_n^2)$. The final received pristine and distorted images are given by</p>
 <p>$$ E = C + N = S \cdot U + N$$
-$$ F = D + N&rsquo; = g \cdot S \cdot U + V + N&rsquo; $$</p>
+$$ F = D + N' = g \cdot S \cdot U + V + N' $$</p>
 <p>We condition all quantities on knowing $S$ because knowing $S$ allows us to predict VIF for our particular pair of reference and test images, instead of a general average case. The intuition here is that upon distortion, lesser information about the source is retained in the distorted image. So, the VIF index is defined as
 $$ VIF = \frac{I(C; E | S = s)}{I(C; F | S = s)} $$</p>
 <p>Conveniently, conditioning on $S$ results in all RVs becoming Gaussians, whose entropies are easy to compute. For an image having $N$ samples of dimension $d$, if the covariance matrix has eigenvalues $
@@ -1033,15 +1039,15 @@ $$ \sigma_{v,i}^2 = Cov(D, D) - g_i Cov(C, D)$$</p>
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/cpp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/cpp.min.js"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/python.min.js"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/bash.min.js"></script>
         
       
 
@@ -1128,7 +1134,7 @@ $$ \sigma_{v,i}^2 = Cov(D, D) - g_i Cov(C, D)$$</p>
     
     
     
-    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+    <script src="/js/academic.min.df4a9346d44747527e27f1ae4de5cf2a.js"></script>
 
     
 
