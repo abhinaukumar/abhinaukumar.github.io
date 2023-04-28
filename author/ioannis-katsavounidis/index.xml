@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ioannis Katsavounidis | Abhinau Kumar</title>
+    <link>https://abhinaukumar.github.io/author/ioannis-katsavounidis/</link>
+      <atom:link href="https://abhinaukumar.github.io/author/ioannis-katsavounidis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Ioannis Katsavounidis</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 06 Apr 2023 23:26:54 -0500</lastBuildDate>
+    <image>
+      <url>https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Ioannis Katsavounidis</title>
+      <link>https://abhinaukumar.github.io/author/ioannis-katsavounidis/</link>
+    </image>
+    
+    <item>
+      <title>One Transform To Compute Them All: Efficient Fusion-Based Full-Reference Video Quality Assessment</title>
+      <link>https://abhinaukumar.github.io/publication/funque-plus/</link>
+      <pubDate>Thu, 06 Apr 2023 23:26:54 -0500</pubDate>
+      <guid>https://abhinaukumar.github.io/publication/funque-plus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A hitchhiker’s guide to structural similarity</title>
+      <link>https://abhinaukumar.github.io/publication/hitchhikers-guide/</link>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 -0500</pubDate>
+      <guid>https://abhinaukumar.github.io/publication/hitchhikers-guide/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

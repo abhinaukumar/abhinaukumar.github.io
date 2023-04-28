@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cosmin Stejerean | Abhinau Kumar</title>
+    <link>https://abhinaukumar.github.io/author/cosmin-stejerean/</link>
+      <atom:link href="https://abhinaukumar.github.io/author/cosmin-stejerean/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cosmin Stejerean</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 06 Apr 2023 23:26:54 -0500</lastBuildDate>
+    <image>
+      <url>https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Cosmin Stejerean</title>
+      <link>https://abhinaukumar.github.io/author/cosmin-stejerean/</link>
+    </image>
+    
+    <item>
+      <title>One Transform To Compute Them All: Efficient Fusion-Based Full-Reference Video Quality Assessment</title>
+      <link>https://abhinaukumar.github.io/publication/funque-plus/</link>
+      <pubDate>Thu, 06 Apr 2023 23:26:54 -0500</pubDate>
+      <guid>https://abhinaukumar.github.io/publication/funque-plus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FUNQUE: Fusion of Unified Quality Evaluators</title>
+      <link>https://abhinaukumar.github.io/publication/funque/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 -0500</pubDate>
+      <guid>https://abhinaukumar.github.io/publication/funque/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
