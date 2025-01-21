@@ -231,8 +231,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://abhinaukumar.github.io/post/texture-feature/">
 
@@ -305,7 +305,7 @@
     "name": "Abhinau Kumar",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis."
@@ -768,8 +768,8 @@
 
     <div class="article-style">
       <p>This article is a review of existing texture characterization, identification and segmentation methods. These methods typically involve statistical methods, i.e. inferring from histograms or co-occurrence matrices, and/or signal processing methods, either simple filtering and energy-based methods, or as a method of pre-processing before applying statistical analysis.</p>
-<p>But, what is texture? Simply, &lsquo;&lsquo;texture&rsquo;&rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &lsquo;&lsquo;texture&rsquo;'.</p>
-<p>Texture can also be thought of as local &lsquo;&lsquo;complexity&rsquo;'. The first square in our example had two plain regions, so it was &lsquo;&lsquo;simple&rsquo;', while the checkerboard pattern is more &lsquo;&lsquo;complex&rsquo;'. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &lsquo;&lsquo;simple&rsquo;&rsquo; or &lsquo;&lsquo;plain&rsquo;&rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.</p>
+<p>But, what is texture? Simply, &lsquo;&lsquo;texture&rsquo;&rsquo; describes the local arrangement of pixels/intensity values. For a classic example, consider two $8\times 8$ squares, one painted half white and half black, while the other has a checkerboard pattern. While they have the same mean luminance (brightness), they vary in the arrangement in the actual pixel (intensity) values. That is, they vary in &lsquo;&lsquo;texture&rsquo;&rsquo;.</p>
+<p>Texture can also be thought of as local &lsquo;&lsquo;complexity&rsquo;&rsquo;. The first square in our example had two plain regions, so it was &lsquo;&lsquo;simple&rsquo;&rsquo;, while the checkerboard pattern is more &lsquo;&lsquo;complex&rsquo;&rsquo;. Natural examples of texture include grass, fabric patterns, ripples, falling confetti, etc. Note that we have not rigorously defined the term yet. That is because texture is not a precisely defined concept, merely a notion. Even so, describing local arrangements can be very useful. Texture analysis has found great use in medical image processing, document processing and remote sensing. An example closer to my work would be that &lsquo;&lsquo;simple&rsquo;&rsquo; or &lsquo;&lsquo;plain&rsquo;&rsquo; regions can be compressed easily, while complex regions may demand higher bandwidth.</p>
 <p>What type of questions can we ask about texture? The simplest question is to identify it. Given a set of texture classes, can we identify a given texture as being one of these? This is called texture classification and typically involves statistical methods. Another task is texture segmentation, where we wish to segment (split) an image into regions having different textures from each other. Think of the Windows XP wallpaper, but without clouds and less tidy grass. Such a method would split the image into the sky and the grass because they have different textures.</p>
 <p>We will now look at features that we can use to describe textures. Currently, I&rsquo;m not interested in specific algorithms. My goal is to find ways to &lsquo;&lsquo;describe&rsquo;&rsquo; texture. This will also not be an exhaustive review of all texture features. After all, texture is not the focus of my work. Learning this is just the means to an end, so I will only go so far as I need to.</p>
 <p>Most of my reading has used this presentation [1] and this review article [2] as jumping points to other sources wherever necessary.</p>
@@ -792,7 +792,7 @@ $$ G_{\delta}[i,j] = \sum_x \sum_y \mathbb{1}(G[x,y] = i) \mathbb{1}(G[x+\delta 
 <p>The autocorrelation function (ACF) is a powerful signal processing method to extract repeating patterns. Given an image  $ I(x,y) $,  the ACF is defined as</p>
 <p>$$ \rho(u,v) = \frac{\sum_x \sum_y I(x,y) I(x+u, y+v)}{\sum_x\sum_y I^2(x,y)} $$</p>
 <p>The auto-correlation function is a function of the &lsquo;&lsquo;offset&rsquo;&rsquo; between pairs of pixels. Given an offset, we multiply corresponding intensity values and consider the normalized sum. Why is this relevant? When the offset is close to the &lsquo;&lsquo;true&rsquo;&rsquo; offset between similar texture elements, the value of the ACF is close to 1, which is its highest value.</p>
-<p>Why is this the case? The short technical answer is &lsquo;&lsquo;Cauchy-Schwarz Inequality&rsquo;'. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &lsquo;&lsquo;test&rsquo;&rsquo; various offsets. When we choose the correct offset, the repeating intensities &lsquo;&lsquo;line up&rsquo;', so they get squared in the summation, leading to an ACF value close to 1. When we choose an &lsquo;&lsquo;incorrect&rsquo;&rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &lsquo;&lsquo;lining up&rsquo;&rsquo; is a good thing.</p>
+<p>Why is this the case? The short technical answer is &lsquo;&lsquo;Cauchy-Schwarz Inequality&rsquo;&rsquo;. More simply, we know that textures involve patterns which repeat at some intervals (although not exactly). So, it makes sense that we would like to &lsquo;&lsquo;test&rsquo;&rsquo; various offsets. When we choose the correct offset, the repeating intensities &lsquo;&lsquo;line up&rsquo;&rsquo;, so they get squared in the summation, leading to an ACF value close to 1. When we choose an &lsquo;&lsquo;incorrect&rsquo;&rsquo; offset, the repeating values do not overlap, leading to lower values. The figure below shows a visual argument for why &lsquo;&lsquo;lining up&rsquo;&rsquo; is a good thing.</p>
 <p><img src="cs_ineq.png" alt="Visualizing Cauchy-Schwarz Inequality"></p>
 <p>At this point, much like Dumbledore to Harry on the Astronomy Tower, I must ask for your trust in believing that squaring values when lining up is the &lsquo;&lsquo;best&rsquo;&rsquo; you can do (that is, lining up maximizes the ACF). Thankfully, you don&rsquo;t need to wait for the death of a morally grey character to find out why this is actually the case. There are elegant proofs of the Cauchy Schwarz inequality that I would encourage you to find online. Several proofs have been reviewed in [4].</p>
 <p>Moving on, the ACF falls off slowly when the texture is coarse, because it takes a large shift to fall out of, or out of phase with, the texture. On the other hand, fine textures cause a sharp drop in the ACF.</p>
@@ -1131,7 +1131,7 @@ These TEM filters are used to filter images and compute the local texture energy
     
     
     
-    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+    <script src="/js/academic.min.df4a9346d44747527e27f1ae4de5cf2a.js"></script>
 
     
 

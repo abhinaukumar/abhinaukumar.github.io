@@ -231,8 +231,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://abhinaukumar.github.io/post/reduced-reference/">
 
@@ -305,7 +305,7 @@
     "name": "Abhinau Kumar",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "In this post, we will introduce two broad categories of image/video quality models, and discuss two algorithms that fall under a third, hybrid, category. We will heavily borrow from concepts of Natural Scene Statics (NSS) and Information theory discussed in my earlier post on VIF."
@@ -784,7 +784,7 @@ $$ C_{mkfr} = S_{mkfr} U_{mkfr}, \ C_{mkfd} = S_{mkfd} U_{mkfd}$$</p>
 <p>Similarly, to measure the temporal quality, we consider the wavelet coefficients of the differences between successive frames and model them also as GSM RVs.
 $$ D_{mkfr} = T_{mkfr} V_{mkfr}, \ D_{mkfd} = T_{mkfd} V_{mkfd}$$</p>
 <p>These are passed through an Additive White Gaussian Noise Channel (AWGN) which models neural noise in the Human Visual System (HVS) to get
-$$C_{mkfr}&rsquo; = C_{mkfr} + W_{mkfr}, \ C_{mkfd}&rsquo; = C_{mkfd} + W_{mkfd}$$ $$D_{mkfr}&rsquo; = D_{mkfr} + Z_{mkfr}, \ D_{mkfd}&rsquo; = D_{mkfd} + Z_{mkfd}$$</p>
+$$C_{mkfr}' = C_{mkfr} + W_{mkfr}, \ C_{mkfd}' = C_{mkfd} + W_{mkfd}$$ $$D_{mkfr}' = D_{mkfr} + Z_{mkfr}, \ D_{mkfd}' = D_{mkfd} + Z_{mkfd}$$</p>
 <p>where the noise RVs $W_{mkfr}$ and $W_{mkfd}$ are distributed as $\mathcal{N}(0, \sigma_w^2 I)$, and $Z_{mkfr}$ and $Z_{mkfd}$ are distributed as $\mathcal{N}(0, \sigma_z^2 I)$.</p>
 <p>As in VIF, we estimate the covariance of the &ldquo;underlying&rdquo; Gaussian in each case, denoting them by $K_{U_{kfr}}$, $K_{V_{kfd}}$, $ K_{V_{kfr}}$, and the value of the scalar multipliers at each point (also called the variance field), denoting them by $s_{mkfr}$, $s_{mkfd}$, $t_{mkfr}$, and $t_{mkfd}$.</p>
 <p>Using these quantities, we can compute the conditional differential entropy of the $d = M^2$ dimensional GSM vectors $C$ and $D$ given $s$ and $t$ respectively as
@@ -1125,7 +1125,7 @@ $$ STRRED_k = SRRED_k \cdot TRRED_k$$</p>
     
     
     
-    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+    <script src="/js/academic.min.df4a9346d44747527e27f1ae4de5cf2a.js"></script>
 
     
 
