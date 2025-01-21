@@ -231,8 +231,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="https://abhinaukumar.github.io/post/nss-and-vif/">
 
@@ -305,7 +305,7 @@
     "name": "Abhinau Kumar",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+      "url": "https://abhinaukumar.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
   "description": "This article is a review of a popular Image Quality Model - Visual Information Fidelity (VIF) [1] which is all based on a statistical model of natural scenes. To do this, we will first review a powerful natural scene statistics (NSS) model, the Gaussian Scale Mixture."
@@ -775,7 +775,7 @@ $$ X = S \cdot U $$</p>
 <p>At this point, we should clarify and introduce a few notions. First, what are natural images? They are not images <em>of nature</em>. A natural image is an image which has not undergone any distortions, like blur, compression. noise, etc. So, a natural image is one which <em>looks</em> natural.</p>
 <p>Second, what are wavelets? Informally, a wavelet is a &lsquo;&lsquo;localized&rsquo;&rsquo; wave. That is, while waves (think sinusoids) are periodic and infinite, wavelets are more localized in space (or time). Much like the Heisenberg Uncertainty principle, signals also obey an uncertainty principle. Simply put, a signal cannot have an arbitrary small spread in both space and frequency. So, because a wave has zero spread in frequency (a sinusoid has only one frequency), it has an infinite spread in space. In other words, we say that a sinusoid offers perfect frequency resolution but no spatial resolution.</p>
 <p>A wavelet, by being localized in space, allows us to trade off spread in space for spread in frequency, giving us both (limited) spatial and frequency resolution. A wider wavelet has poorer spatial resolution, but better frequency resolution. Because images are two dimensional, there is also a notion of orientation resolution. Isotropic functions (functions which are identical in all directions) offer no orientation selectivity in space while very narrow functions offer high orientation selectivity. The steerable pyramid [3], used in VIF and STRRED [2], provides a set of wavelets which allows for an (overcomplete) multi-scale multi-orientation decomposition of images.</p>
-<p>Finally, let us talk about information theory. In my opinion, information theory is the most beautiful offshoot of probability theory. The goal of information theory, as one would guess, is to characterize the amount of information stored in &lsquo;&lsquo;sources&rsquo;&rsquo;, which are random variables.</p>
+<p>Finally, let us talk about information theory. In my opinion, information theory is the most beautiful offshoot of probability theory. The goal of information theory, as one would guess, is to characterize the amount of information stored in &lsquo;&lsquo;sources&rsquo;', which are random variables.</p>
 <p>The amount of information in, or randomness of, a random variable $ X $ is called its entropy. Mathematically, the (Shannon) entropy of a random variable having a probability mass function $f(x)$ is given by
 $$ H(X) = -E[\log f(X)] $$</p>
 <p>This function satisfies properties that we would expect a randomness measure to satisfy. First, we would like the amount of randomness to always be non-negative, which is true of Shannon Entropy (See 
@@ -803,7 +803,7 @@ graph LR;
 <p>$$ D = g \cdot C + V $$</p>
 <p>Finally, we model the neural noise of the HVS as an AWGN channel having $N, N&rsquo; \sim \mathcal{N}(0, \sigma_n^2)$. The final received pristine and distorted images are given by</p>
 <p>$$ E = C + N = S \cdot U + N$$
-$$ F = D + N' = g \cdot S \cdot U + V + N' $$</p>
+$$ F = D + N&rsquo; = g \cdot S \cdot U + V + N&rsquo; $$</p>
 <p>We condition all quantities on knowing $S$ because knowing $S$ allows us to predict VIF for our particular pair of reference and test images, instead of a general average case. The intuition here is that upon distortion, lesser information about the source is retained in the distorted image. So, the VIF index is defined as
 $$ VIF = \frac{I(C; E | S = s)}{I(C; F | S = s)} $$</p>
 <p>Conveniently, conditioning on $S$ results in all RVs becoming Gaussians, whose entropies are easy to compute. For an image having $N$ samples of dimension $d$, if the covariance matrix has eigenvalues $
@@ -1134,7 +1134,7 @@ $$ \sigma_{v,i}^2 = Cov(D, D) - g_i Cov(C, D)$$</p>
     
     
     
-    <script src="/js/academic.min.df4a9346d44747527e27f1ae4de5cf2a.js"></script>
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
 
     
 
